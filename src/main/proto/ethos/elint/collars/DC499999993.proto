@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package elint.collars;
+
+/**
+
+Mail Domain Collar — Eutopia federated mail system.
+
+v0: intra-ecosystem only, LAN-direct peer transport.
+v1: WebRTC + Firestore signaling pad.
+v2: Iroh QUIC + relay overlay, mohalla-federated SMTP gateway.
+
+See docs/EUTOPIA_MAIL_V0_PLAN.md in eapp-live for build plan.
+
+**/
+
+message DC499999993 {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+
+
+  // -------------------------------------------------------
+  // ----------- COLLAR ENTITIES STARTS --------------------
+  // -------------------------------------------------------
+  // ---------------- ONLY 1000 ENTITIES -------------------
+  // ---------------- RANGES 5000 to 6000 ------------------
+  // -------------------------------------------------------
+
+  MailMessage mail_message = 5000;
+  MailBox mailbox = 5001;
+  ContactKey contact_key = 5002;
+  MailThread thread = 5003;
+
+  // -------------------------------------------------------
+  // ----------------- COLLAR ENTITIES ENDS ----------------
+  // -------------------------------------------------------
+
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+// A single mail message — on the wire as ciphertext + signature.
+// Plaintext envelope (subject, body, attachments) lives inside
+// encrypted_envelope and is never exposed to gateways or relays.
+message MailMessage {
+  string id = 1;                          // SHA-256 of (cipher || signature)
+  string from_address = 2;                // e.g. alice.koramangala.m49@50gramx.com
+  string to_address = 3;
+  bytes encrypted_envelope = 4;           // XChaCha20-Poly1305 ciphertext
+  bytes envelope_nonce = 5;               // 24-byte nonce
+  bytes envelope_mac = 6;                 // Poly1305 tag
+  bytes sender_signature = 7;             // Ed25519 over encrypted_envelope
+  bytes sender_kx_pubkey = 8;             // X25519 public key snapshot
+  bytes sender_sig_pubkey = 9;            // Ed25519 public key snapshot
+  google.protobuf.Timestamp sent_at = 10;
+  google.protobuf.Timestamp received_at = 11;
+  string thread_id = 12;                  // optional, empty for new threads
+  int32 envelope_version = 13;            // schema version of plaintext inside
+}
+
+// Per-address mailbox state held on each user's device.
+message MailBox {
+  string id = 1;
+  string owner_address = 2;
+  int32 unread_count = 3;
+  int32 total_count = 4;
+  google.protobuf.Timestamp last_received_at = 5;
+}
+
+// Trusted contact record — a peer's published keys + reachable endpoint.
+// In v0 these are entered manually; v1 resolves via DHT; v2 verifies
+// against mohalla validator signatures.
+message ContactKey {
+  string address = 1;
+  bytes kx_pubkey = 2;                    // X25519
+  bytes sig_pubkey = 3;                   // Ed25519
+  string transport_hint = 4;              // "lan:192.168.1.42:47821", "webrtc:..", "iroh:.."
+  google.protobuf.Timestamp last_verified = 5;
+  string verified_via = 6;                // "manual", "qr", "dht", "mohalla-signed"
+}
+
+// Conversation thread — sequence of MailMessage ids.
+message MailThread {
+  string id = 1;
+  repeated string participant_addresses = 2;
+  repeated string message_ids = 3;
+  google.protobuf.Timestamp started_at = 4;
+  google.protobuf.Timestamp last_message_at = 5;
+}
