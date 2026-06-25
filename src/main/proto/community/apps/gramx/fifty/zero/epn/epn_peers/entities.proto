@@ -4,7 +4,7 @@ package community.apps.gramx.fifty.zero.epn.epn_peers;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "community/apps/gramx/fifty/zero/epn/epn_peers/entities;entities";
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/entities;entities";
 
 message EAMV7100 {
   string eamvt7100 = 1;
@@ -51,4 +51,5 @@ message EAMV7107 {
   string eamvt7120 = 4;
   string eamvt7121 = 5;
 }
+
 

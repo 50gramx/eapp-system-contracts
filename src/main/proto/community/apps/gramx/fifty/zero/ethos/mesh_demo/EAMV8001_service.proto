@@ -4,7 +4,7 @@ package community.apps.gramx.fifty.zero.ethos.mesh_demo;
 
 import "community/apps/gramx/fifty/zero/ethos/mesh_demo/entities.proto";
 
-option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo/services;services";
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/ethos/mesh_demo/services;services";
 
 service EAMV8001DiscoverService {
   rpc EAMC8001 (EAMV8002) returns (EAMV8001);
@@ -12,4 +12,5 @@ service EAMV8001DiscoverService {
   rpc EAMC8003 (EAMV8002) returns (stream EAMV8001);
   rpc EAMC8004 (stream EAMV8002) returns (stream EAMV8001);
 }
+
 

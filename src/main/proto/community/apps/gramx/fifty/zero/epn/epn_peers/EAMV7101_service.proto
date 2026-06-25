@@ -4,9 +4,10 @@ package community.apps.gramx.fifty.zero.epn.epn_peers;
 
 import "community/apps/gramx/fifty/zero/epn/epn_peers/entities.proto";
 
-option go_package = "community/apps/gramx/fifty/zero/epn/epn_peers/services;services";
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/services;services";
 
 service EAMV7101DiscoverService {
   rpc EAMC7101 (stream EAMV7100) returns (EAMV7101);
 }
+
 
