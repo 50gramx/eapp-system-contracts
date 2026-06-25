@@ -2,6 +2,13 @@ syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.ethos.mesh_demo;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+
 option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo;entities";
 
 message EAMV8002 {
@@ -12,14 +19,33 @@ message EAMV8001 {
   string eamvt8001 = 1;
   string eamvt8002 = 2;
   string eamvt8003 = 3;
-  int64 eamvt8007 = 4;
-  bool eamvt8008 = 5;
-  bytes eamvt8009 = 6;
-  EAMV8003 eamvt8010 = 7;
+  double eamvt8028 = 4;
+  float eamvt8029 = 5;
+  int64 eamvt8007 = 6;
+  bool eamvt8008 = 7;
+  bytes eamvt8009 = 8;
+  EAMV8003 eamvt8010 = 9;
+  int32 eamvt8011 = 10;
+  uint32 eamvt8012 = 11;
+  uint64 eamvt8013 = 12;
+  sint32 eamvt8014 = 13;
+  sint64 eamvt8015 = 14;
+  fixed32 eamvt8016 = 15;
+  fixed64 eamvt8017 = 16;
+  sfixed32 eamvt8018 = 17;
+  sfixed64 eamvt8019 = 18;
+  google.protobuf.Timestamp eamvt8020 = 19;
+  google.protobuf.Duration eamvt8021 = 20;
+  google.protobuf.Empty eamvt8022 = 21;
+  google.protobuf.Struct eamvt8023 = 22;
+  google.protobuf.Any eamvt8024 = 23;
+  google.protobuf.FieldMask eamvt8025 = 24;
+  ELVT1018 eamvt8030 = 25;
+  EAMV8002 eamvt8031 = 26;
 }
 
 message EAMV8003 {
   string eamvt8005 = 1;
-  double eamvt8006 = 2;
+  double eamvt8032 = 2;
 }
 
