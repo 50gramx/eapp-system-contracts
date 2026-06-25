@@ -6,7 +6,7 @@ import "community/apps/gramx/fifty/zero/ethos/mesh_demo/entities.proto";
 
 option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo;services";
 
-service EthosBrowserEvoMeshDemoService {
+service EAMV8001DiscoverService {
   rpc EAMC8001 (EAMV8002) returns (EAMV8001);
 }
 
