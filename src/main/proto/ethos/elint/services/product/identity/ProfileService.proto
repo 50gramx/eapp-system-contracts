@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ethos.elint.services.product.identity;
+
+option go_package = "ethos/elint/services/product/identity;profileservice";
+
+message FilterInput {
+  string user_id = 1;
+}
+
+message MeshProfile {
+  string user_id = 1;
+  string display_name = 2;
+  string email = 3;
+}
+
+service ProfileService {
+  rpc GetProfile (FilterInput) returns (MeshProfile);
+}
