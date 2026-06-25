@@ -40,7 +40,7 @@ message EAMV8001 {
   google.protobuf.Struct eamvt8023 = 22;
   google.protobuf.Any eamvt8024 = 23;
   google.protobuf.FieldMask eamvt8025 = 24;
-  ELVT1018 eamvt8030 = 25;
+  google.protobuf.ListValue eamvt8030 = 25;
   EAMV8002 eamvt8031 = 26;
 }
 
