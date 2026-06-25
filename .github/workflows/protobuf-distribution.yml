@@ -205,10 +205,10 @@ jobs:
           fi
           
           # Create tarball
-          tar -czf eapp-dart-domain-${{ steps.build.outputs.version }}.tar.gz *
+          tar -czf ../../../eapp-dart-domain-${{ steps.build.outputs.version }}.tar.gz *
           
           # Upload package file
-          gh release upload v${{ steps.build.outputs.version }} eapp-dart-domain-${{ steps.build.outputs.version }}.tar.gz \
+          gh release upload v${{ steps.build.outputs.version }} ../../../eapp-dart-domain-${{ steps.build.outputs.version }}.tar.gz \
             --repo ${{ github.repository_owner }}/eapp-dart-domain \
             --clobber
           
