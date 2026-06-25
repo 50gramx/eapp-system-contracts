@@ -1,4 +1,4 @@
-name: Protobuf Distribution
+﻿name: Protobuf Distribution
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
             --grpc_python_out=../python-domain/src/eapp_python_domain/ethos \
             --pyi_out=../python-domain/src/eapp_python_domain/ethos \
             -I src/main/proto \
-            $(find src/main/proto -name "*.proto")
+            $(find src/main/proto/community/apps/gramx/fifty/zero -name "*.proto")
           
           # Create __init__.py files
           find ../python-domain/src/eapp_python_domain/ethos -type d -exec touch {}/__init__.py \;
@@ -164,7 +164,7 @@ jobs:
             google/protobuf/timestamp.proto \
             google/protobuf/any.proto \
             -I src/main/proto \
-            $(find src/main/proto -name "*.proto")
+            $(find src/main/proto/community/apps/gramx/fifty/zero -name "*.proto")
 
       - name: Build Dart Package
         id: build
@@ -219,8 +219,79 @@ jobs:
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
           git push origin master
 
+  compile-go:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Go Domain
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-golang-domain
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: go-domain
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Install protobuf compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.6
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1
+
+      - name: Compile Protobuf for Go
+        run: |
+          cd system-contracts
+          rm -rf ../go-domain/community
+          PATH="$PATH:$(go env GOPATH)/bin" protoc \
+            --go_out=../go-domain \
+            --go-grpc_out=../go-domain \
+            -I src/main/proto \
+            $(find src/main/proto/community/apps/gramx/fifty/zero -name "*.proto")
+
+      - name: Build Go Package
+        id: build
+        run: |
+          cd go-domain
+          VERSION="$(date +%Y).$(date +%m).$(date +%s | tail -c 3)"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          go mod tidy
+          go test ./...
+          tar --exclude=.git -czf eapp-golang-domain-${VERSION}.tar.gz .
+          echo "archive=eapp-golang-domain-${VERSION}.tar.gz" >> $GITHUB_OUTPUT
+
+      - name: Publish Go Package
+        env:
+          GH_TOKEN: ${{ secrets.PROTOBUF_TOKEN }}
+        run: |
+          cd go-domain
+          gh release create v${{ steps.build.outputs.version }} \
+            --repo ${{ github.repository_owner }}/eapp-golang-domain \
+            --title "Release v${{ steps.build.outputs.version }}" \
+            --notes "Go protobuf client package" \
+            --draft=false \
+            --prerelease=false
+          gh release upload v${{ steps.build.outputs.version }} ${{ steps.build.outputs.archive }} \
+            --repo ${{ github.repository_owner }}/eapp-golang-domain \
+            --clobber
+
+      - name: Commit Go Changes
+        run: |
+          cd go-domain
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
+          git push origin master
   create-central-index:
-    needs: [compile-python, compile-dart]
+    needs: [compile-python, compile-dart, compile-go]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout System Contracts
@@ -234,9 +305,10 @@ jobs:
           
           # Replace timestamp placeholder
           sed -i "s/{{TIMESTAMP}}/$(date -u)/g" packages/index.html
-
       - name: Completion
         run: |
           echo "Protobuf distribution completed!"
           echo "Python: https://github.com/50gramx/eapp-python-domain/releases"
-          echo "Dart: https://github.com/50gramx/eapp-dart-domain/releases" 
+          echo "Dart: https://github.com/50gramx/eapp-dart-domain/releases"
+          echo "Go: https://github.com/50gramx/eapp-golang-domain/releases"
+

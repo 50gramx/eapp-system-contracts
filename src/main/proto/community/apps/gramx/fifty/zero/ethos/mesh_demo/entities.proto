@@ -1,4 +1,4 @@
-syntax = "proto3";
+﻿syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.ethos.mesh_demo;
 
@@ -9,7 +9,7 @@ import "google/protobuf/struct.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/field_mask.proto";
 
-option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo;entities";
+option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo/entities;entities";
 
 message EAMV8002 {
   string eamvt8004 = 1;
@@ -48,4 +48,5 @@ message EAMV8003 {
   string eamvt8005 = 1;
   double eamvt8032 = 2;
 }
+
 
