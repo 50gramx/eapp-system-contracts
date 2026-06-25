@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.ethos.mesh_demo;
+
+option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo;entities";
+
+message EAMV8002 {
+  string user_id = 1;
+}
+
+message EAMV8001 {
+  string user_id = 1;
+  string display_name = 2;
+  string email = 3;
+}
+
