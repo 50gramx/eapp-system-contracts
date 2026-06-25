@@ -267,8 +267,8 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           go mod tidy
           go test ./...
-          tar --exclude=.git -czf eapp-golang-domain-${VERSION}.tar.gz .
-          echo "archive=eapp-golang-domain-${VERSION}.tar.gz" >> $GITHUB_OUTPUT
+          tar --exclude=.git -czf ../eapp-golang-domain-${VERSION}.tar.gz .
+          echo "archive=../eapp-golang-domain-${VERSION}.tar.gz" >> $GITHUB_OUTPUT
 
       - name: Publish Go Package
         env:
