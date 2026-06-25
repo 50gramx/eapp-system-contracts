@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_peers;
+
+option go_package = "community/apps/gramx/fifty/zero/epn/epn_peers/entities;entities";
+
+// Warning: Variable EAMV7100 definition missing
+message EAMV7100 {}
+
+// Warning: Variable EAMV7101 definition missing
+message EAMV7101 {}
+
+// Warning: Variable EAMV7103 definition missing
+message EAMV7103 {}
+
+// Warning: Variable EAMV7104 definition missing
+message EAMV7104 {}
+
+// Warning: Variable EAMV7105 definition missing
+message EAMV7105 {}
+
+// Warning: Variable EAMV7106 definition missing
+message EAMV7106 {}
+
+// Warning: Variable EAMV7107 definition missing
+message EAMV7107 {}
+

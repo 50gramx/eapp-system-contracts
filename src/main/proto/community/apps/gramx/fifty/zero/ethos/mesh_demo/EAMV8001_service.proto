@@ -1,4 +1,4 @@
-﻿syntax = "proto3";
+syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.ethos.mesh_demo;
 
@@ -12,5 +12,4 @@ service EAMV8001DiscoverService {
   rpc EAMC8003 (EAMV8002) returns (stream EAMV8001);
   rpc EAMC8004 (stream EAMV8002) returns (stream EAMV8001);
 }
-
 

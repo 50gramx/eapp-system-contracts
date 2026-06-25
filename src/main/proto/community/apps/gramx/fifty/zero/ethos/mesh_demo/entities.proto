@@ -1,4 +1,4 @@
-﻿syntax = "proto3";
+syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.ethos.mesh_demo;
 
@@ -48,5 +48,4 @@ message EAMV8003 {
   string eamvt8005 = 1;
   double eamvt8032 = 2;
 }
-
 

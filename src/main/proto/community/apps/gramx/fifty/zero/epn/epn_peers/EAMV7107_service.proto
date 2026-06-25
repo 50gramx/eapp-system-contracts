@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_peers;
+
+import "community/apps/gramx/fifty/zero/epn/epn_peers/entities.proto";
+
+option go_package = "community/apps/gramx/fifty/zero/epn/epn_peers/services;services";
+
+service EAMV7107DiscoverService {
+  rpc EAMC7104 (stream EAMV7106) returns (EAMV7107);
+}
+
