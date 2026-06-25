@@ -12,5 +12,14 @@ message EAMV8001 {
   string eamvt8001 = 1;
   string eamvt8002 = 2;
   string eamvt8003 = 3;
+  int64 eamvt8007 = 4;
+  bool eamvt8008 = 5;
+  bytes eamvt8009 = 6;
+  EAMV8003 eamvt8010 = 7;
+}
+
+message EAMV8003 {
+  string eamvt8005 = 1;
+  double eamvt8006 = 2;
 }
 

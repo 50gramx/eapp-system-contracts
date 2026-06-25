@@ -8,5 +8,8 @@ option go_package = "community/apps/gramx/fifty/zero/ethos/mesh_demo;services";
 
 service EAMV8001DiscoverService {
   rpc EAMC8001 (EAMV8002) returns (EAMV8001);
+  rpc EAMC8002 (stream EAMV8002) returns (EAMV8001);
+  rpc EAMC8003 (EAMV8002) returns (stream EAMV8001);
+  rpc EAMC8004 (stream EAMV8002) returns (stream EAMV8001);
 }
 
