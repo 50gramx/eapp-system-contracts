@@ -252,7 +252,9 @@ jobs:
           cd system-contracts
           rm -rf ../go-domain/community
           PATH="$PATH:$(go env GOPATH)/bin" protoc \
+            --go_opt=module=github.com/50gramx/eapp-golang-domain \
             --go_out=../go-domain \
+            --go-grpc_opt=module=github.com/50gramx/eapp-golang-domain \
             --go-grpc_out=../go-domain \
             -I src/main/proto \
             $(find src/main/proto/community/apps/gramx/fifty/zero -name "*.proto")
