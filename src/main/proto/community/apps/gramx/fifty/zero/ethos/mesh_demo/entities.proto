@@ -49,4 +49,3 @@ message EAMV8003 {
   double eamvt8032 = 2;
 }
 
-

@@ -10,4 +10,3 @@ service EAMV7101DiscoverService {
   rpc EAMC7101 (stream EAMV7100) returns (EAMV7101);
 }
 
-
