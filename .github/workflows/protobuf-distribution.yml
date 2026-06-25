@@ -30,10 +30,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          pip install protobuf==4.25.1
-          pip install grpcio-tools==1.60.0
-          pip install grpcio==1.60.0
-          pip install build
+          python -m pip install --upgrade protobuf==4.25.1 grpcio-tools==1.60.0 grpcio==1.60.0 build
 
       - name: Compile Protobuf for Python
         run: |
@@ -151,7 +148,7 @@ jobs:
       - name: Install Dart protobuf compiler
         run: |
           dart pub global activate protoc_plugin
-          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Compile Protobuf for Dart
         run: |
