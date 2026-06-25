@@ -118,7 +118,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code and package index for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   compile-dart:
     runs-on: ubuntu-latest
@@ -217,7 +217,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   compile-go:
     runs-on: ubuntu-latest
@@ -292,7 +292,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
   create-central-index:
     needs: [compile-python, compile-dart, compile-go]
     runs-on: ubuntu-latest
@@ -314,4 +314,5 @@ jobs:
           echo "Python: https://github.com/50gramx/eapp-python-domain/releases"
           echo "Dart: https://github.com/50gramx/eapp-dart-domain/releases"
           echo "Go: https://github.com/50gramx/eapp-golang-domain/releases"
+
 
