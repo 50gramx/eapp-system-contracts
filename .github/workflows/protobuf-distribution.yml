@@ -252,7 +252,9 @@ jobs:
           cd system-contracts
           rm -rf ../go-domain/community
           PATH="$PATH:$(go env GOPATH)/bin" protoc \
+            --go_opt=paths=source_relative \
             --go_out=../go-domain \
+            --go-grpc_opt=paths=source_relative \
             --go-grpc_out=../go-domain \
             -I src/main/proto \
             $(find src/main/proto/community/apps/gramx/fifty/zero -name "*.proto")
