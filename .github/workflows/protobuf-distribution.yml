@@ -233,7 +233,7 @@ jobs:
           repository: ${{ github.repository_owner }}/eapp-golang-domain
           token: ${{ secrets.PROTOBUF_TOKEN }}
           path: go-domain
-          ref: master
+          ref: main
 
       - name: Setup Go
         uses: actions/setup-go@v5
