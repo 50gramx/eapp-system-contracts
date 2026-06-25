@@ -1,4 +1,4 @@
-﻿name: Protobuf Distribution
+name: Protobuf Distribution
 
 on:
   push:
