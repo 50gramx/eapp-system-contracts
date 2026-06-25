@@ -2,26 +2,53 @@ syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.epn.epn_peers;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "community/apps/gramx/fifty/zero/epn/epn_peers/entities;entities";
 
-// Warning: Variable EAMV7100 definition missing
-message EAMV7100 {}
+message EAMV7100 {
+  string eamvt7100 = 1;
+}
 
-// Warning: Variable EAMV7101 definition missing
-message EAMV7101 {}
+message EAMV7101 {
+  string eamvt7101 = 1;
+  string eamvt7102 = 2;
+  repeated string eamvt7103 = 3;
+  string eamvt7104 = 4;
+  bool eamvt7105 = 5;
+}
 
-// Warning: Variable EAMV7103 definition missing
-message EAMV7103 {}
+message EAMV7103 {
+  repeated EAMV7102 eamvt7111 = 1;
+}
 
-// Warning: Variable EAMV7104 definition missing
-message EAMV7104 {}
+message EAMV7102 {
+  string eamvt7106 = 1;
+  string eamvt7107 = 2;
+  repeated string eamvt7108 = 3;
+  repeated string eamvt7109 = 4;
+  google.protobuf.Timestamp eamvt7110 = 5;
+}
 
-// Warning: Variable EAMV7105 definition missing
-message EAMV7105 {}
+message EAMV7104 {
+  string eamvt7112 = 1;
+}
 
-// Warning: Variable EAMV7106 definition missing
-message EAMV7106 {}
+message EAMV7105 {
+  string eamvt7113 = 1;
+  string eamvt7114 = 2;
+  bool eamvt7115 = 3;
+}
 
-// Warning: Variable EAMV7107 definition missing
-message EAMV7107 {}
+message EAMV7106 {
+  string eamvt7116 = 1;
+}
+
+message EAMV7107 {
+  string eamvt7117 = 1;
+  string eamvt7118 = 2;
+  string eamvt7119 = 3;
+  string eamvt7120 = 4;
+  string eamvt7121 = 5;
+}
 
