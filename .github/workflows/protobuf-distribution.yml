@@ -7,8 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  prepare-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Compute release version
+        id: version
+        run: |
+          VERSION="$(date +%Y).$(date +%m).${GITHUB_RUN_ID}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
   compile-python:
     runs-on: ubuntu-latest
+    needs: prepare-version
     steps:
       - name: Checkout System Contracts
         uses: actions/checkout@v4
@@ -55,9 +67,7 @@ jobs:
         id: build
         run: |
           cd python-domain
-          
-          # Update version in setup.py (use year.month.short_unique format)
-          VERSION="$(date +%Y).$(date +%m).$(date +%s | tail -c 3)"
+          VERSION="${{ needs.prepare-version.outputs.version }}"
           sed -i "s/version='[^']*'/version='$VERSION'/" setup.py
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           
@@ -118,10 +128,11 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code and package index for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
   compile-dart:
     runs-on: ubuntu-latest
+    needs: prepare-version
     steps:
       - name: Checkout System Contracts
         uses: actions/checkout@v4
@@ -170,9 +181,7 @@ jobs:
         id: build
         run: |
           cd dart-domain/src/eapp_dart_domain
-          
-          # Update version in pubspec.yaml (use year.month.patch format)
-          VERSION="$(date +%Y).$(date +%m).$(date +%s | tail -c 3)"
+          VERSION="${{ needs.prepare-version.outputs.version }}"
           sed -i "s/version: .*/version: $VERSION/" pubspec.yaml
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           
@@ -184,14 +193,16 @@ jobs:
           GH_TOKEN: ${{ secrets.PROTOBUF_TOKEN }}
         run: |
           cd dart-domain/src/eapp_dart_domain
-          
-          # Create release in dart-domain repo
-          gh release create v${{ steps.build.outputs.version }} \
-            --repo ${{ github.repository_owner }}/eapp-dart-domain \
-            --title "Release v${{ steps.build.outputs.version }}" \
-            --notes "Dart protobuf client package" \
-            --draft=false \
-            --prerelease=false
+          if gh release view v${{ steps.build.outputs.version }} --repo ${{ github.repository_owner }}/eapp-dart-domain >/dev/null 2>&1; then
+            echo "Release v${{ steps.build.outputs.version }} already exists."
+          else
+            gh release create v${{ steps.build.outputs.version }} \
+              --repo ${{ github.repository_owner }}/eapp-dart-domain \
+              --title "Release v${{ steps.build.outputs.version }}" \
+              --notes "Dart protobuf client package" \
+              --draft=false \
+              --prerelease=false
+          fi
           
           # Create tarball
           tar -czf eapp-dart-domain-${{ steps.build.outputs.version }}.tar.gz *
@@ -221,6 +232,7 @@ jobs:
 
   compile-go:
     runs-on: ubuntu-latest
+    needs: prepare-version
     steps:
       - name: Checkout System Contracts
         uses: actions/checkout@v4
@@ -263,7 +275,7 @@ jobs:
         id: build
         run: |
           cd go-domain
-          VERSION="$(date +%Y).$(date +%m).$(date +%s | tail -c 3)"
+          VERSION="${{ needs.prepare-version.outputs.version }}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           go mod tidy
           go test ./...
