@@ -304,7 +304,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin main
+          git push origin master
   create-central-index:
     needs: [compile-python, compile-dart, compile-go]
     runs-on: ubuntu-latest
@@ -400,7 +400,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md pubspec.yaml lib/eapp_dart_consumer.dart lib/src/peer_mesh/peer_mesh_client.dart lib/src/generated/mesh_registry.g.dart tool/generate_consumer_registry.dart
           git commit -m "Update dart consumer registry for ${LATEST_DART_DOMAIN_TAG}" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
 
 
@@ -438,7 +438,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md pubspec.yaml lib/eapp_dart_implementation.dart lib/src/server/placeholder_server.dart lib/src/generated
           git commit -m "Update Dart implementation scaffold from contracts" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
   update-golang-implementation:
     needs: [create-central-index, compile-go]
@@ -473,7 +473,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md go.mod server/generated
           git commit -m "Update Go implementation scaffold from contracts" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
 
   update-go-consumer:
@@ -491,6 +491,7 @@ jobs:
           repository: ${{ github.repository_owner }}/eapp-golang-consumer
           token: ${{ secrets.PROTOBUF_TOKEN }}
           path: go-consumer
+          ref: master
 
       - name: Checkout Go Domain
         uses: actions/checkout@v4
@@ -512,7 +513,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md developer_config.yaml go.mod peerclient
           git commit -m "Sync go consumer with latest protobuf domain" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
   update-python-consumer:
     needs: [create-central-index, compile-python]
@@ -529,6 +530,7 @@ jobs:
           repository: ${{ github.repository_owner }}/eapp-python-consumer
           token: ${{ secrets.PROTOBUF_TOKEN }}
           path: python-consumer
+          ref: master
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -539,7 +541,8 @@ jobs:
         run: |
           cd python-consumer
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install -e .
+          python -m pip install --no-deps -e .
+          python -m compileall src
 
       - name: Commit Python Consumer Changes
         run: |
@@ -548,7 +551,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md setup.py pyproject.toml src
           git commit -m "Sync python consumer with protobuf domain" || echo "No changes to commit"
-          git push origin main
+          git push origin master
 
   update-python-implementation:
     needs: [create-central-index, compile-python]
@@ -565,6 +568,7 @@ jobs:
           repository: ${{ github.repository_owner }}/eapp-python-implementation
           token: ${{ secrets.PROTOBUF_TOKEN }}
           path: python-implementation
+          ref: master
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -584,4 +588,6 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md src tests capabilities.yaml cloudbuild.yaml bitbucket-pipelines.yml Jenkinsfile Dockerfile docker-compose.yml
           git commit -m "Sync python implementation with protobuf domain" || echo "No changes to commit"
-          git push origin main
+          git push origin master
+
+
