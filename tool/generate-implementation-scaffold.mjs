@@ -24,33 +24,114 @@ function pascalCase(input) {
     .join('');
 }
 
-function makeStubFile(entityName, serviceName, methods) {
+function dartImportPath(packageName, subdir, fileName) {
+  return `package:eapp_dart_domain/ethos/${packageName.replaceAll('.', '/')}/${subdir}/${fileName}`;
+}
+
+function makeDartServiceFile(packageName, entityName, serviceName, methods) {
   const servicePascal = pascalCase(serviceName);
   const entityPascal = pascalCase(entityName);
+  const serviceImport = dartImportPath(packageName, 'services', `${serviceName}.pbgrpc.dart`);
+  const entitiesImport = dartImportPath(packageName, '', `entities.pb.dart`);
+  const requestType = methods[0]?.requestType?.split('.').pop() || 'EAMV8002';
+  const responseType = methods[0]?.responseType?.split('.').pop() || 'EAMV8001';
 
-  if (repoKind === 'go') {
-    const methodComments = methods.map(method => {
-      const capabilityCode = method.capabilityCode || method.methodName;
-      return `// TODO: replace this placeholder with the actual implementation for ${capabilityCode}.`;
-    }).join('\n');
+  const methodBodies = methods.map(method => {
+    const capabilityCode = method.capabilityCode || method.methodName;
+    const reqType = method.requestType?.split('.').pop() || requestType;
+    const resType = method.responseType?.split('.').pop() || responseType;
+    const isClientStream = Boolean(method.requestStream && !method.responseStream);
+    const isServerStream = Boolean(!method.requestStream && method.responseStream);
+    const isBidiStream = Boolean(method.requestStream && method.responseStream);
 
-    return `package generated
-
-// Generated from system-contracts consumer-registry-manifest.json.
-// TODO: wire actual service behavior in the implementation layer.
-type ${entityPascal}${servicePascal}Server struct{}
-
-${methodComments}
-`;
+    if (isBidiStream) {
+      return `  @override
+  Stream<$resType> ${method.methodName}(ServiceCall call, Stream<$reqType> request) async* {
+    // TODO: replace this contract-shaped shell with the real bidi implementation for ${capabilityCode}.
+    // Keep the generated stub stable so business logic can be added later.
+    throw UnimplementedError('UNIMPLEMENTED: ${capabilityCode}');
   }
+`;
+    }
+
+    if (isClientStream) {
+      return `  @override
+  Future<$resType> ${method.methodName}(ServiceCall call, Stream<$reqType> request) async {
+    // TODO: replace this contract-shaped shell with the real client-stream implementation for ${capabilityCode}.
+    // Keep the generated stub stable so business logic can be added later.
+    throw UnimplementedError('UNIMPLEMENTED: ${capabilityCode}');
+  }
+`;
+    }
+
+    if (isServerStream) {
+      return `  @override
+  Stream<$resType> ${method.methodName}(ServiceCall call, $reqType request) async* {
+    // TODO: replace this contract-shaped shell with the real server-stream implementation for ${capabilityCode}.
+    // Keep the generated stub stable so business logic can be added later.
+    throw UnimplementedError('UNIMPLEMENTED: ${capabilityCode}');
+  }
+`;
+    }
+
+    return `  @override
+  Future<$resType> ${method.methodName}(ServiceCall call, $reqType request) async {
+    // TODO: replace this contract-shaped shell with the real unary implementation for ${capabilityCode}.
+    // Keep the generated stub stable so business logic can be added later.
+    throw UnimplementedError('UNIMPLEMENTED: ${capabilityCode}');
+  }
+`;
+  }).join('\n');
 
   return `// GENERATED CODE - DO NOT MODIFY BY HAND.
 // Generated from system-contracts consumer-registry-manifest.json.
 
-class ${entityPascal}${servicePascal}Server {
-${methods.map(method => `  // TODO: replace this placeholder with the actual implementation for ${method.capabilityCode || method.methodName}.
-  String ${method.methodName}() => 'UNIMPLEMENTED: ${method.capabilityCode || method.methodName}';
-`).join('\n')}
+import 'package:grpc/grpc.dart';
+import '${serviceImport}';
+import '${entitiesImport}';
+
+class ${entityPascal}${servicePascal}Implementation extends ${servicePascal}Base {
+${methodBodies}}
+`;
+}
+
+function goImportPath(packageName, folder) {
+  return `github.com/50gramx/eapp-golang-domain/${packageName.replaceAll('.', '/')}/${folder}`;
+}
+
+function makeGoServiceFile(packageName, entityName, serviceName, methods) {
+  const servicePascal = pascalCase(serviceName);
+  const entityPascal = pascalCase(entityName);
+  const serviceImport = goImportPath(packageName, 'services');
+  const entitiesImport = goImportPath(packageName, 'entities');
+
+  const methodComments = methods.map(method => {
+    const capabilityCode = method.capabilityCode || method.methodName;
+    return `// TODO: replace this contract-shaped shell with the real implementation for ${capabilityCode}.`;
+  }).join('\n');
+
+  return `package generated
+
+import (
+	"context"
+
+	entities "${entitiesImport}"
+	services "${serviceImport}"
+	grpc "google.golang.org/grpc"
+)
+
+// Generated from system-contracts consumer-registry-manifest.json.
+// TODO: wire actual service behavior in the implementation layer.
+type ${entityPascal}${servicePascal}Server struct {
+	services.Unimplemented${servicePascal}Server
+}
+
+${methodComments}
+
+var _ services.${servicePascal}Server = (*${entityPascal}${servicePascal}Server)(nil)
+
+func (s *${entityPascal}${servicePascal}Server) EAMC8001(ctx context.Context, request *entities.${methods[0]?.requestType?.split('.').pop() || 'EAMV8002'}) (*entities.${methods[0]?.responseType?.split('.').pop() || 'EAMV8001'}, error) {
+	return nil, grpc.Errorf(grpc.Code(grpc.Unimplemented), "UNIMPLEMENTED: ${methods[0]?.capabilityCode || 'EAMC8001'}")
 }
 `;
 }
@@ -64,7 +145,9 @@ for (const [packageName, packageEntry] of Object.entries(manifest.packages || {}
       const fileName = repoKind === 'go'
         ? `${entityName}_${serviceName}.go`
         : `${entityName}_${serviceName}.dart`;
-      fs.writeFileSync(path.join(targetDir, fileName), makeStubFile(entityName, serviceName, methods), 'utf8');
+      fs.writeFileSync(path.join(targetDir, fileName), repoKind === 'go'
+        ? makeGoServiceFile(packageName, entityName, serviceName, methods)
+        : makeDartServiceFile(packageName, entityName, serviceName, methods), 'utf8');
     }
   }
 }
