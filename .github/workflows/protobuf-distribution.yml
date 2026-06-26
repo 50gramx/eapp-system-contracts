@@ -168,12 +168,12 @@ jobs:
           cd system-contracts
           
           # Clean previous generated files
-          rm -rf ../dart-domain/src/eapp_dart_domain/ethos
-          mkdir -p ../dart-domain/src/eapp_dart_domain/ethos
+          rm -rf ../dart-domain/src/eapp_dart_domain/lib/ethos
+          mkdir -p ../dart-domain/src/eapp_dart_domain/lib/ethos
           
           # Generate Dart protobuf code using the working approach
           protoc \
-            --dart_out=grpc:"../dart-domain/src/eapp_dart_domain/ethos" \
+            --dart_out=grpc:"../dart-domain/src/eapp_dart_domain/lib/ethos" \
             google/protobuf/timestamp.proto \
             google/protobuf/any.proto \
             -I src/main/proto \
