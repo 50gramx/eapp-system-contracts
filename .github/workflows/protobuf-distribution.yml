@@ -335,6 +335,11 @@ jobs:
     needs: [create-central-index, compile-dart]
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
@@ -344,6 +349,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: system-contracts
+
+      - name: Generate Consumer Registry Manifest
+        run: |
+          cd system-contracts
+          node tool/generate-consumer-registry-manifest.mjs
 
       - name: Checkout Dart Consumer
         uses: actions/checkout@v4
