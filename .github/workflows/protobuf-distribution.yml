@@ -475,3 +475,113 @@ jobs:
           git commit -m "Update Go implementation scaffold from contracts" || echo "No changes to commit"
           git push origin main
 
+
+  update-go-consumer:
+    needs: [create-central-index, compile-go]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Go Consumer
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-golang-consumer
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: go-consumer
+
+      - name: Checkout Go Domain
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-golang-domain
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: go-domain
+          ref: main
+
+      - name: Build Go Consumer
+        run: |
+          cd go-consumer
+          go test ./...
+
+      - name: Commit Go Consumer Changes
+        run: |
+          cd go-consumer
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md developer_config.yaml go.mod peerclient
+          git commit -m "Sync go consumer with latest protobuf domain" || echo "No changes to commit"
+          git push origin main
+
+  update-python-consumer:
+    needs: [create-central-index, compile-python]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Python Consumer
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-python-consumer
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: python-consumer
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Validate Python Consumer
+        run: |
+          cd python-consumer
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -e .
+
+      - name: Commit Python Consumer Changes
+        run: |
+          cd python-consumer
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md setup.py pyproject.toml src
+          git commit -m "Sync python consumer with protobuf domain" || echo "No changes to commit"
+          git push origin main
+
+  update-python-implementation:
+    needs: [create-central-index, compile-python]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Python Implementation
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-python-implementation
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: python-implementation
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Validate Python Implementation
+        run: |
+          cd python-implementation
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt || true
+
+      - name: Commit Python Implementation Changes
+        run: |
+          cd python-implementation
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md src tests capabilities.yaml cloudbuild.yaml bitbucket-pipelines.yml Jenkinsfile Dockerfile docker-compose.yml
+          git commit -m "Sync python implementation with protobuf domain" || echo "No changes to commit"
+          git push origin main
