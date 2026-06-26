@@ -335,6 +335,11 @@ jobs:
     needs: [create-central-index, compile-dart]
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.1.2'
+
       - name: Checkout System Contracts
         uses: actions/checkout@v4
         with:
