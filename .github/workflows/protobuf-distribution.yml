@@ -388,9 +388,9 @@ jobs:
           cd dart-consumer
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add .
+          git add README.md pubspec.yaml lib/eapp_dart_consumer.dart lib/src/peer_mesh/peer_mesh_client.dart lib/src/generated/mesh_registry.g.dart tool/generate_consumer_registry.dart
           git commit -m "Update dart consumer registry for ${LATEST_DART_DOMAIN_TAG}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
 
 
