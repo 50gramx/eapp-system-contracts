@@ -498,12 +498,13 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/eapp-golang-domain
           token: ${{ secrets.PROTOBUF_TOKEN }}
-          path: go-domain
+          path: eapp-golang-domain
           ref: main
 
       - name: Build Go Consumer
         run: |
           cd go-consumer
+          go mod tidy
           go test ./...
 
       - name: Commit Go Consumer Changes
