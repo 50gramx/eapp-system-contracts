@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.ethos.mesh_demo;
+
+import "community/apps/gramx/fifty/zero/ethos/mesh_demo/entities.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/ethos/mesh_demo/services;services";
+
+service EAMV8004DiscoverService {
+  rpc EAMC8005 (EAMV8004) returns (EAMV8004);
+}
+
