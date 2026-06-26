@@ -491,7 +491,7 @@ jobs:
           repository: ${{ github.repository_owner }}/eapp-golang-consumer
           token: ${{ secrets.PROTOBUF_TOKEN }}
           path: go-consumer
-          ref: master
+          ref: main
 
       - name: Checkout Go Domain
         uses: actions/checkout@v4
@@ -513,7 +513,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md developer_config.yaml go.mod peerclient
           git commit -m "Sync go consumer with latest protobuf domain" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   update-python-consumer:
     needs: [create-central-index, compile-python]
@@ -541,7 +541,6 @@ jobs:
         run: |
           cd python-consumer
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install --no-deps -e .
           python -m compileall src
 
       - name: Commit Python Consumer Changes
