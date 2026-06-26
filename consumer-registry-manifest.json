@@ -1,132 +1,141 @@
 {
-  "generatedAt": "2026-06-25T19:09:51.225Z",
-  "protoRoot": "C:\\Users\\amitk\\OneDrive\\Documents\\GitHub\\eapp-system-contracts\\src\\main\\proto\\community\\apps\\gramx\\fifty\\zero",
+  "generatedAt": "2026-06-26T14:26:32.927Z",
+  "contractsRoot": ".",
   "packages": {
-    "community.apps.gramx.fifty.zero.epn.epn_peers": {
-      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/services;services",
-      "files": [
-        "epn/epn_peers/EAMV7101_service.proto",
-        "epn/epn_peers/EAMV7103_service.proto",
-        "epn/epn_peers/EAMV7105_service.proto",
-        "epn/epn_peers/EAMV7107_service.proto",
-        "epn/epn_peers/entities.proto"
-      ],
+    "community.apps.gramx.fifty.zero.epn.epn_agent_chat": {
+      "packageName": "community.apps.gramx.fifty.zero.epn.epn_agent_chat",
       "entities": {
-        "EAMV7101_service": {
-          "protoFile": "epn/epn_peers/EAMV7101_service.proto",
+        "EAMV6002": {
+          "services": {
+            "EAMV6002DiscoverService": [
+              {
+                "capabilityCode": "EAMC6002",
+                "methodName": "EAMC6002",
+                "requestType": "EAMV6001",
+                "responseType": "EAMV6002",
+                "requestStream": false,
+                "responseStream": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_peers": {
+      "packageName": "community.apps.gramx.fifty.zero.epn.epn_peers",
+      "entities": {
+        "EAMV7101": {
           "services": {
             "EAMV7101DiscoverService": [
               {
+                "capabilityCode": "EAMC7101",
                 "methodName": "EAMC7101",
-                "requestStream": true,
                 "requestType": "EAMV7100",
-                "responseStream": false,
                 "responseType": "EAMV7101",
-                "capabilityCode": "EAMC7101"
+                "requestStream": true,
+                "responseStream": false
               }
             ]
           }
         },
-        "EAMV7103_service": {
-          "protoFile": "epn/epn_peers/EAMV7103_service.proto",
+        "EAMV7103": {
           "services": {
             "EAMV7103DiscoverService": [
               {
+                "capabilityCode": "EAMC7102",
                 "methodName": "EAMC7102",
-                "requestStream": true,
                 "requestType": "EAMV7100",
-                "responseStream": false,
                 "responseType": "EAMV7103",
-                "capabilityCode": "EAMC7102"
+                "requestStream": true,
+                "responseStream": false
               }
             ]
           }
         },
-        "EAMV7105_service": {
-          "protoFile": "epn/epn_peers/EAMV7105_service.proto",
+        "EAMV7105": {
           "services": {
             "EAMV7105DiscoverService": [
               {
+                "capabilityCode": "EAMC7103",
                 "methodName": "EAMC7103",
-                "requestStream": true,
                 "requestType": "EAMV7104",
-                "responseStream": false,
                 "responseType": "EAMV7105",
-                "capabilityCode": "EAMC7103"
+                "requestStream": true,
+                "responseStream": false
               }
             ]
           }
         },
-        "EAMV7107_service": {
-          "protoFile": "epn/epn_peers/EAMV7107_service.proto",
+        "EAMV7107": {
           "services": {
             "EAMV7107DiscoverService": [
               {
+                "capabilityCode": "EAMC7104",
                 "methodName": "EAMC7104",
-                "requestStream": true,
                 "requestType": "EAMV7106",
-                "responseStream": false,
                 "responseType": "EAMV7107",
-                "capabilityCode": "EAMC7104"
+                "requestStream": true,
+                "responseStream": false
               }
             ]
           }
-        },
-        "entities": {
-          "protoFile": "epn/epn_peers/entities.proto",
-          "services": {}
         }
       }
     },
     "community.apps.gramx.fifty.zero.ethos.mesh_demo": {
-      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/ethos/mesh_demo/services;services",
-      "files": [
-        "ethos/mesh_demo/EAMV8001_service.proto",
-        "ethos/mesh_demo/entities.proto"
-      ],
+      "packageName": "community.apps.gramx.fifty.zero.ethos.mesh_demo",
       "entities": {
-        "EAMV8001_service": {
-          "protoFile": "ethos/mesh_demo/EAMV8001_service.proto",
+        "EAMV8001": {
           "services": {
             "EAMV8001DiscoverService": [
               {
+                "capabilityCode": "EAMC8001",
                 "methodName": "EAMC8001",
-                "requestStream": false,
                 "requestType": "EAMV8002",
-                "responseStream": false,
                 "responseType": "EAMV8001",
-                "capabilityCode": "EAMC8001"
+                "requestStream": false,
+                "responseStream": false
               },
               {
+                "capabilityCode": "EAMC8002",
                 "methodName": "EAMC8002",
-                "requestStream": true,
                 "requestType": "EAMV8002",
-                "responseStream": false,
                 "responseType": "EAMV8001",
-                "capabilityCode": "EAMC8002"
+                "requestStream": true,
+                "responseStream": false
               },
               {
+                "capabilityCode": "EAMC8003",
                 "methodName": "EAMC8003",
-                "requestStream": false,
                 "requestType": "EAMV8002",
-                "responseStream": true,
                 "responseType": "EAMV8001",
-                "capabilityCode": "EAMC8003"
+                "requestStream": false,
+                "responseStream": true
               },
               {
+                "capabilityCode": "EAMC8004",
                 "methodName": "EAMC8004",
-                "requestStream": true,
                 "requestType": "EAMV8002",
-                "responseStream": true,
                 "responseType": "EAMV8001",
-                "capabilityCode": "EAMC8004"
+                "requestStream": true,
+                "responseStream": true
               }
             ]
           }
         },
-        "entities": {
-          "protoFile": "ethos/mesh_demo/entities.proto",
-          "services": {}
+        "EAMV8004": {
+          "services": {
+            "EAMV8004DiscoverService": [
+              {
+                "capabilityCode": "EAMC8005",
+                "methodName": "EAMC8005",
+                "requestType": "EAMV8004",
+                "responseType": "EAMV8004",
+                "requestStream": false,
+                "responseStream": false
+              }
+            ]
+          }
         }
       }
     }
