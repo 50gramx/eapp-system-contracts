@@ -404,3 +404,74 @@ jobs:
 
 
 
+
+  update-dart-implementation:
+    needs: [create-central-index, compile-dart]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Dart Implementation
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-dart-implementation
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: dart-implementation
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.12.2'
+
+      - name: Generate Dart Implementation Scaffold
+        run: |
+          cd system-contracts
+          node tool/generate-implementation-scaffold.mjs consumer-registry-manifest.json ../dart-implementation dart
+
+      - name: Commit Dart Implementation Changes
+        run: |
+          cd dart-implementation
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md pubspec.yaml lib/eapp_dart_implementation.dart lib/src/server/placeholder_server.dart lib/src/generated
+          git commit -m "Update Dart implementation scaffold from contracts" || echo "No changes to commit"
+          git push origin main
+
+  update-golang-implementation:
+    needs: [create-central-index, compile-go]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Go Implementation
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-golang-implementation
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: go-implementation
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Generate Go Implementation Scaffold
+        run: |
+          cd system-contracts
+          node tool/generate-implementation-scaffold.mjs consumer-registry-manifest.json ../go-implementation go
+
+      - name: Commit Go Implementation Changes
+        run: |
+          cd go-implementation
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md go.mod server/generated
+          git commit -m "Update Go implementation scaffold from contracts" || echo "No changes to commit"
+          git push origin main
+
