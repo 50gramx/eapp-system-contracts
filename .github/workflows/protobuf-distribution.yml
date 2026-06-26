@@ -312,6 +312,10 @@ jobs:
       - name: Checkout System Contracts
         uses: actions/checkout@v4
 
+      - name: Generate Consumer Registry Manifest
+        run: |
+          node tool/generate-consumer-registry-manifest.mjs
+
       - name: Create Central Package Index
         run: |
           # Create central package index from template
@@ -326,5 +330,61 @@ jobs:
           echo "Python: https://github.com/50gramx/eapp-python-domain/releases"
           echo "Dart: https://github.com/50gramx/eapp-dart-domain/releases"
           echo "Go: https://github.com/50gramx/eapp-golang-domain/releases"
+
+  update-dart-consumer:
+    needs: [create-central-index, compile-dart]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout System Contracts
+        uses: actions/checkout@v4
+        with:
+          path: system-contracts
+
+      - name: Checkout Dart Consumer
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-dart-consumer
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: dart-consumer
+
+      - name: Checkout Dart Domain
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/eapp-dart-domain
+          token: ${{ secrets.PROTOBUF_TOKEN }}
+          path: dart-domain
+
+      - name: Resolve Latest Dart Domain Version
+        run: |
+          cd dart-domain
+          LATEST_TAG=$(git tag --sort=-creatordate | head -1)
+          echo "LATEST_DART_DOMAIN_TAG=$LATEST_TAG" >> $GITHUB_ENV
+
+      - name: Update Dart Consumer Dependency
+        run: |
+          cd dart-consumer
+          sed -i "s|url: https://github.com/50gramx/eapp-dart-domain.git|url: https://github.com/50gramx/eapp-dart-domain.git|g" pubspec.yaml
+          sed -i "s|ref: .*|ref: ${LATEST_DART_DOMAIN_TAG#v}|g" pubspec.yaml
+          dart pub get
+
+      - name: Generate Dart Consumer Registry
+        run: |
+          cd dart-consumer
+          if [ -f tool/generate_consumer_registry.dart ]; then
+            dart run tool/generate_consumer_registry.dart \
+              --manifest ../system-contracts/consumer-registry-manifest.json
+          else
+            echo "Registry generator not yet present in dart-consumer repo."
+            exit 1
+          fi
+
+      - name: Commit Dart Consumer Changes
+        run: |
+          cd dart-consumer
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update dart consumer registry for ${LATEST_DART_DOMAIN_TAG}" || echo "No changes to commit"
+          git push origin master
 
 
