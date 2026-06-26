@@ -512,7 +512,7 @@ jobs:
           cd go-consumer
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add README.md developer_config.yaml go.mod peerclient
+          git add README.md developer_config.yaml go.mod peerclient meshclient
           git commit -m "Sync go consumer with latest protobuf domain" || echo "No changes to commit"
           git push origin main
 
