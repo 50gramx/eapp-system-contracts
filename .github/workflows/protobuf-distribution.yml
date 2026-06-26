@@ -128,7 +128,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code and package index for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   compile-dart:
     runs-on: ubuntu-latest
@@ -228,7 +228,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   compile-go:
     runs-on: ubuntu-latest
@@ -304,7 +304,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update protobuf generated code for v${{ steps.build.outputs.version }}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
   create-central-index:
     needs: [compile-python, compile-dart, compile-go]
     runs-on: ubuntu-latest
@@ -400,7 +400,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md pubspec.yaml lib/eapp_dart_consumer.dart lib/src/peer_mesh/peer_mesh_client.dart lib/src/generated/mesh_registry.g.dart tool/generate_consumer_registry.dart
           git commit -m "Update dart consumer registry for ${LATEST_DART_DOMAIN_TAG}" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
 
 
@@ -438,7 +438,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md pubspec.yaml lib/eapp_dart_implementation.dart lib/src/server/placeholder_server.dart lib/src/generated
           git commit -m "Update Dart implementation scaffold from contracts" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   update-golang-implementation:
     needs: [create-central-index, compile-go]
@@ -473,7 +473,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md go.mod server/generated
           git commit -m "Update Go implementation scaffold from contracts" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
 
   update-go-consumer:
@@ -513,7 +513,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md developer_config.yaml go.mod peerclient
           git commit -m "Sync go consumer with latest protobuf domain" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   update-python-consumer:
     needs: [create-central-index, compile-python]
@@ -551,7 +551,7 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md setup.py pyproject.toml src
           git commit -m "Sync python consumer with protobuf domain" || echo "No changes to commit"
-          git push origin master
+          git push origin main
 
   update-python-implementation:
     needs: [create-central-index, compile-python]
@@ -588,6 +588,8 @@ jobs:
           git config user.email "actions@github.com"
           git add README.md src tests capabilities.yaml cloudbuild.yaml bitbucket-pipelines.yml Jenkinsfile Dockerfile docker-compose.yml
           git commit -m "Sync python implementation with protobuf domain" || echo "No changes to commit"
-          git push origin master
+          git push origin main
+
+
 
 
