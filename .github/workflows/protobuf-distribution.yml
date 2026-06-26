@@ -501,6 +501,11 @@ jobs:
           path: eapp-golang-domain
           ref: main
 
+      - name: Generate Go Consumer From Manifest
+        run: |
+          cd system-contracts
+          node tool/generate-go-consumer.mjs consumer-registry-manifest.json ../go-consumer
+
       - name: Build Go Consumer
         run: |
           cd go-consumer
