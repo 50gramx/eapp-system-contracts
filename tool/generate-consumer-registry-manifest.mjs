@@ -52,6 +52,17 @@ function parseServices(text) {
   return services;
 }
 
+function inferEntityName(protoFile, services) {
+  if (services.length > 0) {
+    const firstMethod = services[0].methods[0];
+    if (firstMethod?.responseType) {
+      return firstMethod.responseType;
+    }
+  }
+  const base = path.basename(protoFile, '.proto');
+  return base.endsWith('_service') ? base.slice(0, -'_service'.length) : base;
+}
+
 const manifest = {
   generatedAt: new Date().toISOString(),
   protoRoot,
@@ -73,7 +84,7 @@ for (const protoFile of walk(protoRoot)) {
   };
   packageBucket.files.push(relativePath);
 
-  const entityName = path.basename(protoFile, '.proto');
+  const entityName = inferEntityName(protoFile, services);
   packageBucket.entities[entityName] ??= {
     protoFile: relativePath,
     services: {},
