@@ -54,9 +54,45 @@ function makeGoImplFile(packageName, entityName, serviceName, methods) {
   const servicePascal = pascalCase(serviceName);
   const svcImport = `github.com/50gramx/eapp-golang-domain/${packageName.replaceAll('.', '/')}/services`;
   const entImport = `github.com/50gramx/eapp-golang-domain/${packageName.replaceAll('.', '/')}/entities`;
-  const req = methods[0]?.requestType?.split('.').pop() || 'EAMV8002';
-  const res = methods[0]?.responseType?.split('.').pop() || 'EAMV8001';
-  return `package generated\n\nimport (\n\tcontext \"context\"\n\n\tentities \"${entImport}\"\n\tservices \"${svcImport}\"\n)\n\n// Generated from system-contracts consumer-registry-manifest.json.\ntype ${entityPascal}${servicePascal}Server struct {\n\tservices.Unimplemented${servicePascal}Server\n}\n\nvar _ services.${servicePascal}Server = (*${entityPascal}${servicePascal}Server)(nil)\n\nfunc (s *${entityPascal}${servicePascal}Server) EAMC8001(ctx context.Context, request *entities.${req}) (*entities.${res}, error) {\n\treturn nil, services.Unimplemented${servicePascal}Server{}.EAMC8001(ctx, request)\n}\n`;
+  
+  const methodsCode = methods.map(method => {
+    const methodName = method.methodName;
+    const req = method.requestType?.split('.').pop() || 'EAMV8002';
+    const res = method.responseType?.split('.').pop() || 'EAMV8001';
+    const isClient = !!method.requestStream && !method.responseStream;
+    const isServer = !method.requestStream && !!method.responseStream;
+    const isBidi = !!method.requestStream && !!method.responseStream;
+    
+    if (isBidi) {
+      return `func (s *${entityPascal}${servicePascal}Server) ${methodName}(stream services.${servicePascal}_${methodName}Server) error {\n\treturn services.Unimplemented${servicePascal}Server{}.${methodName}(stream)\n}`;
+    }
+    if (isClient) {
+      return `func (s *${entityPascal}${servicePascal}Server) ${methodName}(stream services.${servicePascal}_${methodName}Server) error {\n\treturn services.Unimplemented${servicePascal}Server{}.${methodName}(stream)\n}`;
+    }
+    if (isServer) {
+      return `func (s *${entityPascal}${servicePascal}Server) ${methodName}(request *entities.${req}, stream services.${servicePascal}_${methodName}Server) error {\n\treturn services.Unimplemented${servicePascal}Server{}.${methodName}(request, stream)\n}`;
+    }
+    return `func (s *${entityPascal}${servicePascal}Server) ${methodName}(ctx context.Context, request *entities.${req}) (*entities.${res}, error) {\n\treturn nil, services.Unimplemented${servicePascal}Server{}.${methodName}(ctx, request)\n}`;
+  }).join('\n\n');
+
+  return `package generated
+
+import (
+	context "context"
+
+	entities "${entImport}"
+	services "${svcImport}"
+)
+
+// Generated from system-contracts consumer-registry-manifest.json.
+type ${entityPascal}${servicePascal}Server struct {
+	services.Unimplemented${servicePascal}Server
+}
+
+var _ services.${servicePascal}Server = (*${entityPascal}${servicePascal}Server)(nil)
+
+${methodsCode}
+`;
 }
 
 for (const [packageName, packageEntry] of Object.entries(manifest.packages || {})) {
