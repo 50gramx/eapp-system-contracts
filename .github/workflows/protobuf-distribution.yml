@@ -149,7 +149,7 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: '3.1.2'
+          sdk: '3.12.2'
 
       - name: Install protobuf compiler
         run: |
@@ -338,7 +338,7 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: '3.1.2'
+          sdk: '3.12.2'
 
       - name: Checkout System Contracts
         uses: actions/checkout@v4
@@ -391,5 +391,6 @@ jobs:
           git add .
           git commit -m "Update dart consumer registry for ${LATEST_DART_DOMAIN_TAG}" || echo "No changes to commit"
           git push origin master
+
 
 
