@@ -49,3 +49,9 @@ message EAMV8003 {
   double eamvt8032 = 2;
 }
 
+message EAMV8004 {
+  string eamvt8033 = 1;
+  bool eamvt8034 = 2;
+  int32 eamvt8035 = 3;
+}
+
