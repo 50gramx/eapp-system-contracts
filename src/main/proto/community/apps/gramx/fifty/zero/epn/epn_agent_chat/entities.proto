@@ -11,30 +11,15 @@ message EAMV6001 {
 }
 
 message EAMV6002 {
-  EAMV6003 eamvt6004 = 1;
-  EAMV6004 eamvt6005 = 2;
-  EAMV6005 eamvt6006 = 3;
-  EAMV6006 eamvt6007 = 4;
-}
-
-message EAMV6003 {
-  string eamvt6008 = 1;
-}
-
-message EAMV6004 {
-  string eamvt6009 = 1;
-  string eamvt6010 = 2;
-  string eamvt6011 = 3;
-}
-
-message EAMV6005 {
-  string eamvt6012 = 1;
-  string eamvt6013 = 2;
-  bool eamvt6014 = 3;
-}
-
-message EAMV6006 {
-  string eamvt6015 = 1;
-  string eamvt6016 = 2;
+  string eamvt6004 = 1;
+  string eamvt6008 = 2;
+  bool eamvt6009 = 3;
+  string eamvt6010 = 4;
+  string eamvt6011 = 5;
+  string eamvt6012 = 6;
+  ELVT1020 eamvt6013 = 7;
+  ELVT1020 eamvt6014 = 8;
+  ELVT1020 eamvt6015 = 9;
+  string eamvt6016 = 10;
 }
 
