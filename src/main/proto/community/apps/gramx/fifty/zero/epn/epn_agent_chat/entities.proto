@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package community.apps.gramx.fifty.zero.epn.epn_agent_chat;
 
+import "google/protobuf/struct.proto";
+
 option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_agent_chat/entities;entities";
 
 message EAMV6001 {
