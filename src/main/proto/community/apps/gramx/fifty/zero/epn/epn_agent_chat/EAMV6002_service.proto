@@ -7,6 +7,6 @@ import "community/apps/gramx/fifty/zero/epn/epn_agent_chat/entities.proto";
 option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_agent_chat/services;services";
 
 service EAMV6002DiscoverService {
-  rpc EAMC6002 (EAMV6001) returns (stream EAMV6002);
+  rpc EAMC6002 (EAMV6001) returns (EAMV6002);
 }
 
