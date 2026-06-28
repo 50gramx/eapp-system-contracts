@@ -65,6 +65,7 @@ function inferEntityName(protoFile, services) {
 
 const manifest = {
   generatedAt: new Date().toISOString(),
+  contractsSource: 'proto-files',  // Manifest is generated from actual proto syntax, not YAML predictions
   protoRoot,
   packages: {},
 };
@@ -95,4 +96,21 @@ for (const protoFile of walk(protoRoot)) {
 }
 
 fs.writeFileSync(outFile, `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`Wrote ${outFile}`);
+console.log(`✓ Generated ${outFile}`);
+
+// Log critical streaming flags for debugging
+console.log('\nStreaming Configuration Summary:');
+for (const [pkgName, pkgData] of Object.entries(manifest.packages || {})) {
+  for (const [entityCode, entityData] of Object.entries(pkgData.entities || {})) {
+    for (const [serviceName, methods] of Object.entries(entityData.services || {})) {
+      for (const method of methods) {
+        const streamInfo = [
+          method.requestStream ? 'req←' : '',
+          method.responseStream ? '→res' : '',
+        ].filter(Boolean).join(' ');
+        const streamLabel = streamInfo || 'unary';
+        console.log(`  ${method.methodName}: ${streamLabel} (req=${method.requestStream}, res=${method.responseStream})`);
+      }
+    }
+  }
+}

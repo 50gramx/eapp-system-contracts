@@ -314,24 +314,42 @@ jobs:
       - name: Checkout System Contracts
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Generate Consumer Registry Manifest
         run: |
           node tool/generate-consumer-registry-manifest.mjs
+
+      - name: Commit Updated Manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add consumer-registry-manifest.json
+          if git diff --cached --quiet; then
+            echo "No manifest changes to commit"
+          else
+            git commit -m "chore: regenerate manifest from proto files [skip ci]"
+            git push origin master
+          fi
 
       - name: Create Central Package Index
         run: |
           # Create central package index from template
           mkdir -p packages
           cp templates/central-package-index.html packages/index.html
-          
+
           # Replace timestamp placeholder
           sed -i "s/{{TIMESTAMP}}/$(date -u)/g" packages/index.html
       - name: Completion
         run: |
-          echo "Protobuf distribution completed!"
-          echo "Python: https://github.com/50gramx/eapp-python-domain/releases"
-          echo "Dart: https://github.com/50gramx/eapp-dart-domain/releases"
-          echo "Go: https://github.com/50gramx/eapp-golang-domain/releases"
+          echo "✓ Protobuf distribution completed!"
+          echo "  Manifest: regenerated from proto files"
+          echo "  Python: https://github.com/50gramx/eapp-python-domain/releases"
+          echo "  Dart: https://github.com/50gramx/eapp-dart-domain/releases"
+          echo "  Go: https://github.com/50gramx/eapp-golang-domain/releases"
 
   update-dart-consumer:
     needs: [create-central-index, compile-dart]

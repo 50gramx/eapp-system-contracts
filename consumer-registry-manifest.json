@@ -14,7 +14,7 @@
                 "requestType": "EAMV6001",
                 "responseType": "EAMV6002",
                 "requestStream": false,
-                "responseStream": true
+                "responseStream": false
               }
             ]
           }
