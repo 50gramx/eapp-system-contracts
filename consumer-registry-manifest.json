@@ -1,141 +1,177 @@
 {
-  "generatedAt": "2026-06-28T16:57:05.098Z",
-  "contractsRoot": ".",
+  "generatedAt": "2026-06-28T21:31:43.195Z",
+  "contractsSource": "proto-files",
+  "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
     "community.apps.gramx.fifty.zero.epn.epn_agent_chat": {
-      "packageName": "community.apps.gramx.fifty.zero.epn.epn_agent_chat",
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_agent_chat/services;services",
+      "files": [
+        "epn/epn_agent_chat/EAMV6002_service.proto",
+        "epn/epn_agent_chat/entities.proto"
+      ],
       "entities": {
         "EAMV6002": {
+          "protoFile": "epn/epn_agent_chat/EAMV6002_service.proto",
           "services": {
             "EAMV6002DiscoverService": [
               {
-                "capabilityCode": "EAMC6002",
                 "methodName": "EAMC6002",
-                "requestType": "EAMV6001",
-                "responseType": "EAMV6002",
                 "requestStream": false,
-                "responseStream": false
+                "requestType": "EAMV6001",
+                "responseStream": false,
+                "responseType": "EAMV6002",
+                "capabilityCode": "EAMC6002"
               }
             ]
           }
+        },
+        "entities": {
+          "protoFile": "epn/epn_agent_chat/entities.proto",
+          "services": {}
         }
       }
     },
     "community.apps.gramx.fifty.zero.epn.epn_peers": {
-      "packageName": "community.apps.gramx.fifty.zero.epn.epn_peers",
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/services;services",
+      "files": [
+        "epn/epn_peers/EAMV7101_service.proto",
+        "epn/epn_peers/EAMV7103_service.proto",
+        "epn/epn_peers/EAMV7105_service.proto",
+        "epn/epn_peers/EAMV7107_service.proto",
+        "epn/epn_peers/entities.proto"
+      ],
       "entities": {
         "EAMV7101": {
+          "protoFile": "epn/epn_peers/EAMV7101_service.proto",
           "services": {
             "EAMV7101DiscoverService": [
               {
-                "capabilityCode": "EAMC7101",
                 "methodName": "EAMC7101",
-                "requestType": "EAMV7100",
-                "responseType": "EAMV7101",
                 "requestStream": true,
-                "responseStream": false
+                "requestType": "EAMV7100",
+                "responseStream": false,
+                "responseType": "EAMV7101",
+                "capabilityCode": "EAMC7101"
               }
             ]
           }
         },
         "EAMV7103": {
+          "protoFile": "epn/epn_peers/EAMV7103_service.proto",
           "services": {
             "EAMV7103DiscoverService": [
               {
-                "capabilityCode": "EAMC7102",
                 "methodName": "EAMC7102",
-                "requestType": "EAMV7100",
-                "responseType": "EAMV7103",
                 "requestStream": true,
-                "responseStream": false
+                "requestType": "EAMV7100",
+                "responseStream": false,
+                "responseType": "EAMV7103",
+                "capabilityCode": "EAMC7102"
               }
             ]
           }
         },
         "EAMV7105": {
+          "protoFile": "epn/epn_peers/EAMV7105_service.proto",
           "services": {
             "EAMV7105DiscoverService": [
               {
-                "capabilityCode": "EAMC7103",
                 "methodName": "EAMC7103",
-                "requestType": "EAMV7104",
-                "responseType": "EAMV7105",
                 "requestStream": true,
-                "responseStream": false
+                "requestType": "EAMV7104",
+                "responseStream": false,
+                "responseType": "EAMV7105",
+                "capabilityCode": "EAMC7103"
               }
             ]
           }
         },
         "EAMV7107": {
+          "protoFile": "epn/epn_peers/EAMV7107_service.proto",
           "services": {
             "EAMV7107DiscoverService": [
               {
-                "capabilityCode": "EAMC7104",
                 "methodName": "EAMC7104",
-                "requestType": "EAMV7106",
-                "responseType": "EAMV7107",
                 "requestStream": true,
-                "responseStream": false
+                "requestType": "EAMV7106",
+                "responseStream": false,
+                "responseType": "EAMV7107",
+                "capabilityCode": "EAMC7104"
               }
             ]
           }
+        },
+        "entities": {
+          "protoFile": "epn/epn_peers/entities.proto",
+          "services": {}
         }
       }
     },
     "community.apps.gramx.fifty.zero.ethos.mesh_demo": {
-      "packageName": "community.apps.gramx.fifty.zero.ethos.mesh_demo",
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/ethos/mesh_demo/services;services",
+      "files": [
+        "ethos/mesh_demo/EAMV8001_service.proto",
+        "ethos/mesh_demo/EAMV8004_service.proto",
+        "ethos/mesh_demo/entities.proto"
+      ],
       "entities": {
         "EAMV8001": {
+          "protoFile": "ethos/mesh_demo/EAMV8001_service.proto",
           "services": {
             "EAMV8001DiscoverService": [
               {
-                "capabilityCode": "EAMC8001",
                 "methodName": "EAMC8001",
-                "requestType": "EAMV8002",
-                "responseType": "EAMV8001",
                 "requestStream": false,
-                "responseStream": false
+                "requestType": "EAMV8002",
+                "responseStream": false,
+                "responseType": "EAMV8001",
+                "capabilityCode": "EAMC8001"
               },
               {
-                "capabilityCode": "EAMC8002",
                 "methodName": "EAMC8002",
-                "requestType": "EAMV8002",
-                "responseType": "EAMV8001",
                 "requestStream": true,
-                "responseStream": false
+                "requestType": "EAMV8002",
+                "responseStream": false,
+                "responseType": "EAMV8001",
+                "capabilityCode": "EAMC8002"
               },
               {
-                "capabilityCode": "EAMC8003",
                 "methodName": "EAMC8003",
-                "requestType": "EAMV8002",
-                "responseType": "EAMV8001",
                 "requestStream": false,
-                "responseStream": true
+                "requestType": "EAMV8002",
+                "responseStream": true,
+                "responseType": "EAMV8001",
+                "capabilityCode": "EAMC8003"
               },
               {
-                "capabilityCode": "EAMC8004",
                 "methodName": "EAMC8004",
-                "requestType": "EAMV8002",
-                "responseType": "EAMV8001",
                 "requestStream": true,
-                "responseStream": true
+                "requestType": "EAMV8002",
+                "responseStream": true,
+                "responseType": "EAMV8001",
+                "capabilityCode": "EAMC8004"
               }
             ]
           }
         },
         "EAMV8004": {
+          "protoFile": "ethos/mesh_demo/EAMV8004_service.proto",
           "services": {
             "EAMV8004DiscoverService": [
               {
-                "capabilityCode": "EAMC8005",
                 "methodName": "EAMC8005",
-                "requestType": "EAMV8004",
-                "responseType": "EAMV8004",
                 "requestStream": false,
-                "responseStream": false
+                "requestType": "EAMV8004",
+                "responseStream": false,
+                "responseType": "EAMV8004",
+                "capabilityCode": "EAMC8005"
               }
             ]
           }
+        },
+        "entities": {
+          "protoFile": "ethos/mesh_demo/entities.proto",
+          "services": {}
         }
       }
     }
