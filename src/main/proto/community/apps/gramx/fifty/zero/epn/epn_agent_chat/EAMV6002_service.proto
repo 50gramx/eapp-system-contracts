@@ -8,5 +8,6 @@ option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/
 
 service EAMV6002DiscoverService {
   rpc EAMC6002 (EAMV6001) returns (EAMV6002);
+  rpc EAMC6003 (EAMV6001) returns (stream EAMV6002);
 }
 
