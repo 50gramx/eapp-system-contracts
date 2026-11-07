@@ -29,5 +29,19 @@ message EAMV6002 {
   string eamvt6020 = 14;
   string eamvt6021 = 15;
   google.protobuf.ListValue eamvt6022 = 16;
+  google.protobuf.ListValue eamvt6023 = 17;
+  string eamvt6024 = 18;
+}
+
+message EAMV6007 {
+  string eamvt6030 = 1;
+}
+
+message EAMV6008 {
+  string eamvt6031 = 1;
+  string eamvt6032 = 2;
+  google.protobuf.ListValue eamvt6033 = 3;
+  bool eamvt6034 = 4;
+  string eamvt6035 = 5;
 }
 
