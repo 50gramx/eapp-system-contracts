@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T13:05:47.379Z",
+  "generatedAt": "2026-11-07T19:51:36.064Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -8,6 +8,9 @@
       "files": [
         "epn/epn_agent_chat/EAMV6002_service.proto",
         "epn/epn_agent_chat/EAMV6008_service.proto",
+        "epn/epn_agent_chat/EAMV6010_service.proto",
+        "epn/epn_agent_chat/EAMV6012_service.proto",
+        "epn/epn_agent_chat/EAMV6014_service.proto",
         "epn/epn_agent_chat/entities.proto"
       ],
       "entities": {
@@ -45,6 +48,51 @@
                 "responseStream": false,
                 "responseType": "EAMV6008",
                 "capabilityCode": "EAMC6004"
+              }
+            ]
+          }
+        },
+        "EAMV6010": {
+          "protoFile": "epn/epn_agent_chat/EAMV6010_service.proto",
+          "services": {
+            "EAMV6010DiscoverService": [
+              {
+                "methodName": "EAMC6005",
+                "requestStream": false,
+                "requestType": "EAMV6009",
+                "responseStream": false,
+                "responseType": "EAMV6010",
+                "capabilityCode": "EAMC6005"
+              }
+            ]
+          }
+        },
+        "EAMV6012": {
+          "protoFile": "epn/epn_agent_chat/EAMV6012_service.proto",
+          "services": {
+            "EAMV6012DiscoverService": [
+              {
+                "methodName": "EAMC6006",
+                "requestStream": false,
+                "requestType": "EAMV6011",
+                "responseStream": false,
+                "responseType": "EAMV6012",
+                "capabilityCode": "EAMC6006"
+              }
+            ]
+          }
+        },
+        "EAMV6014": {
+          "protoFile": "epn/epn_agent_chat/EAMV6014_service.proto",
+          "services": {
+            "EAMV6014DiscoverService": [
+              {
+                "methodName": "EAMC6007",
+                "requestStream": false,
+                "requestType": "EAMV6013",
+                "responseStream": false,
+                "responseType": "EAMV6014",
+                "capabilityCode": "EAMC6007"
               }
             ]
           }
