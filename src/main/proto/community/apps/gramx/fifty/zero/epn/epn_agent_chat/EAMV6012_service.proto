@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_agent_chat;
+
+import "community/apps/gramx/fifty/zero/epn/epn_agent_chat/entities.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_agent_chat/services;services";
+
+service EAMV6012DiscoverService {
+  rpc EAMC6006 (EAMV6011) returns (EAMV6012);
+}
+

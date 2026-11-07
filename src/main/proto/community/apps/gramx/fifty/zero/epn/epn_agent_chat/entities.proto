@@ -45,3 +45,30 @@ message EAMV6008 {
   string eamvt6035 = 5;
 }
 
+message EAMV6009 {
+  string eamvt6036 = 1;
+}
+
+message EAMV6010 {
+  google.protobuf.ListValue eamvt6037 = 1;
+}
+
+message EAMV6011 {
+  string eamvt6038 = 1;
+}
+
+message EAMV6012 {
+  string eamvt6039 = 1;
+  google.protobuf.ListValue eamvt6040 = 2;
+  string eamvt6041 = 3;
+}
+
+message EAMV6013 {
+  string eamvt6042 = 1;
+}
+
+message EAMV6014 {
+  google.protobuf.ListValue eamvt6043 = 1;
+  string eamvt6044 = 2;
+}
+
