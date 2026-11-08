@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T14:58:48.353Z",
+  "generatedAt": "2026-11-08T15:16:37.754Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -147,6 +147,50 @@
         }
       }
     },
+    "community.apps.gramx.fifty.zero.epn.epn_node": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_node/services;services",
+      "files": [
+        "epn/epn_node/EAMV14002_service.proto",
+        "epn/epn_node/EAMV14004_service.proto",
+        "epn/epn_node/entities.proto"
+      ],
+      "entities": {
+        "EAMV14002": {
+          "protoFile": "epn/epn_node/EAMV14002_service.proto",
+          "services": {
+            "EAMV14002DiscoverService": [
+              {
+                "methodName": "EAMC14001",
+                "requestStream": false,
+                "requestType": "EAMV14001",
+                "responseStream": false,
+                "responseType": "EAMV14002",
+                "capabilityCode": "EAMC14001"
+              }
+            ]
+          }
+        },
+        "EAMV14004": {
+          "protoFile": "epn/epn_node/EAMV14004_service.proto",
+          "services": {
+            "EAMV14004DiscoverService": [
+              {
+                "methodName": "EAMC14002",
+                "requestStream": false,
+                "requestType": "EAMV14003",
+                "responseStream": false,
+                "responseType": "EAMV14004",
+                "capabilityCode": "EAMC14002"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_node/entities.proto",
+          "services": {}
+        }
+      }
+    },
     "community.apps.gramx.fifty.zero.epn.epn_peers": {
       "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/services;services",
       "files": [
@@ -154,6 +198,8 @@
         "epn/epn_peers/EAMV7103_service.proto",
         "epn/epn_peers/EAMV7105_service.proto",
         "epn/epn_peers/EAMV7107_service.proto",
+        "epn/epn_peers/EAMV7109_service.proto",
+        "epn/epn_peers/EAMV7111_service.proto",
         "epn/epn_peers/entities.proto"
       ],
       "entities": {
@@ -217,8 +263,66 @@
             ]
           }
         },
+        "EAMV7109": {
+          "protoFile": "epn/epn_peers/EAMV7109_service.proto",
+          "services": {
+            "EAMV7109DiscoverService": [
+              {
+                "methodName": "EAMC7105",
+                "requestStream": false,
+                "requestType": "EAMV7108",
+                "responseStream": false,
+                "responseType": "EAMV7109",
+                "capabilityCode": "EAMC7105"
+              }
+            ]
+          }
+        },
+        "EAMV7111": {
+          "protoFile": "epn/epn_peers/EAMV7111_service.proto",
+          "services": {
+            "EAMV7111DiscoverService": [
+              {
+                "methodName": "EAMC7106",
+                "requestStream": false,
+                "requestType": "EAMV7110",
+                "responseStream": false,
+                "responseType": "EAMV7111",
+                "capabilityCode": "EAMC7106"
+              }
+            ]
+          }
+        },
         "entities": {
           "protoFile": "epn/epn_peers/entities.proto",
+          "services": {}
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_wallet": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_wallet/services;services",
+      "files": [
+        "epn/epn_wallet/EAMV8102_service.proto",
+        "epn/epn_wallet/entities.proto"
+      ],
+      "entities": {
+        "EAMV8102": {
+          "protoFile": "epn/epn_wallet/EAMV8102_service.proto",
+          "services": {
+            "EAMV8102DiscoverService": [
+              {
+                "methodName": "EAMC8101",
+                "requestStream": false,
+                "requestType": "EAMV8101",
+                "responseStream": false,
+                "responseType": "EAMV8102",
+                "capabilityCode": "EAMC8101"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_wallet/entities.proto",
           "services": {}
         }
       }
