@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T15:32:29.218Z",
+  "generatedAt": "2026-11-08T17:11:06.491Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -103,6 +103,34 @@
         }
       }
     },
+    "community.apps.gramx.fifty.zero.epn.epn_circle": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_circle/services;services",
+      "files": [
+        "epn/epn_circle/EAMV15002_service.proto",
+        "epn/epn_circle/entities.proto"
+      ],
+      "entities": {
+        "EAMV15002": {
+          "protoFile": "epn/epn_circle/EAMV15002_service.proto",
+          "services": {
+            "EAMV15002DiscoverService": [
+              {
+                "methodName": "EAMC15001",
+                "requestStream": false,
+                "requestType": "EAMV15001",
+                "responseStream": false,
+                "responseType": "EAMV15002",
+                "capabilityCode": "EAMC15001"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_circle/entities.proto",
+          "services": {}
+        }
+      }
+    },
     "community.apps.gramx.fifty.zero.epn.epn_metering": {
       "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_metering/services;services",
       "files": [
@@ -200,6 +228,7 @@
         "epn/epn_peers/EAMV7107_service.proto",
         "epn/epn_peers/EAMV7109_service.proto",
         "epn/epn_peers/EAMV7111_service.proto",
+        "epn/epn_peers/EAMV7113_service.proto",
         "epn/epn_peers/entities.proto"
       ],
       "entities": {
@@ -289,6 +318,21 @@
                 "responseStream": false,
                 "responseType": "EAMV7111",
                 "capabilityCode": "EAMC7106"
+              }
+            ]
+          }
+        },
+        "EAMV7113": {
+          "protoFile": "epn/epn_peers/EAMV7113_service.proto",
+          "services": {
+            "EAMV7113DiscoverService": [
+              {
+                "methodName": "EAMC7107",
+                "requestStream": false,
+                "requestType": "EAMV7112",
+                "responseStream": false,
+                "responseType": "EAMV7113",
+                "capabilityCode": "EAMC7107"
               }
             ]
           }
