@@ -17,3 +17,20 @@ message EAMV15002 {
   google.protobuf.ListValue eamvt15005 = 4;
 }
 
+message EAMV15003 {
+  string eamvt15006 = 1;
+}
+
+message EAMV15004 {
+  string eamvt15007 = 1;
+  string eamvt15008 = 2;
+  google.protobuf.ListValue eamvt15009 = 3;
+  google.protobuf.ListValue eamvt15010 = 4;
+  google.protobuf.ListValue eamvt15011 = 5;
+}
+
+message EAMV15005 {
+  string eamvt15012 = 1;
+  string eamvt15013 = 2;
+}
+
