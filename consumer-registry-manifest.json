@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T07:09:19.832Z",
+  "generatedAt": "2026-11-08T07:18:04.829Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -99,6 +99,50 @@
         },
         "entities": {
           "protoFile": "epn/epn_agent_chat/entities.proto",
+          "services": {}
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_metering": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_metering/services;services",
+      "files": [
+        "epn/epn_metering/EAMV11002_service.proto",
+        "epn/epn_metering/EAMV11004_service.proto",
+        "epn/epn_metering/entities.proto"
+      ],
+      "entities": {
+        "EAMV11002": {
+          "protoFile": "epn/epn_metering/EAMV11002_service.proto",
+          "services": {
+            "EAMV11002DiscoverService": [
+              {
+                "methodName": "EAMC11001",
+                "requestStream": false,
+                "requestType": "EAMV11001",
+                "responseStream": false,
+                "responseType": "EAMV11002",
+                "capabilityCode": "EAMC11001"
+              }
+            ]
+          }
+        },
+        "EAMV11004": {
+          "protoFile": "epn/epn_metering/EAMV11004_service.proto",
+          "services": {
+            "EAMV11004DiscoverService": [
+              {
+                "methodName": "EAMC11002",
+                "requestStream": false,
+                "requestType": "EAMV11003",
+                "responseStream": false,
+                "responseType": "EAMV11004",
+                "capabilityCode": "EAMC11002"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_metering/entities.proto",
           "services": {}
         }
       }
