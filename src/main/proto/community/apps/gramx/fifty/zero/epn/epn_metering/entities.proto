@@ -16,6 +16,7 @@ message EAMV11002 {
   google.protobuf.ListValue eamvt11008 = 3;
   google.protobuf.ListValue eamvt11009 = 4;
   google.protobuf.ListValue eamvt11010 = 5;
+  google.protobuf.ListValue eamvt11011 = 6;
 }
 
 message EAMV11003 {

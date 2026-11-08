@@ -3,6 +3,7 @@ syntax = "proto3";
 package community.apps.gramx.fifty.zero.epn.epn_peers;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 
 option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/entities;entities";
 
@@ -50,5 +51,24 @@ message EAMV7107 {
   string eamvt7119 = 3;
   string eamvt7120 = 4;
   string eamvt7121 = 5;
+}
+
+message EAMV7108 {
+  string eamvt7122 = 1;
+}
+
+message EAMV7109 {
+  google.protobuf.ListValue eamvt7123 = 1;
+  string eamvt7124 = 2;
+  google.protobuf.ListValue eamvt7125 = 3;
+}
+
+message EAMV7110 {
+  string eamvt7126 = 1;
+}
+
+message EAMV7111 {
+  google.protobuf.ListValue eamvt7127 = 1;
+  string eamvt7128 = 2;
 }
 

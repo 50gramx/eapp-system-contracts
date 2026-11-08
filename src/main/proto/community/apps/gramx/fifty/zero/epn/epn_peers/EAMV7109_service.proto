@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_peers;
+
+import "community/apps/gramx/fifty/zero/epn/epn_peers/entities.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_peers/services;services";
+
+service EAMV7109DiscoverService {
+  rpc EAMC7105 (EAMV7108) returns (EAMV7109);
+}
+

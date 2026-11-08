@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_wallet;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_wallet/entities;entities";
+
+message EAMV8101 {
+  string eamvt8101 = 1;
+}
+
+message EAMV8102 {
+  string eamvt8102 = 1;
+  string eamvt8103 = 2;
+  google.protobuf.ListValue eamvt8104 = 3;
+}
+

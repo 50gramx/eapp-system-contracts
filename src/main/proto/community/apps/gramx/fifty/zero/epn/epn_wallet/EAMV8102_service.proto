@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_wallet;
+
+import "community/apps/gramx/fifty/zero/epn/epn_wallet/entities.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_wallet/services;services";
+
+service EAMV8102DiscoverService {
+  rpc EAMC8101 (EAMV8101) returns (EAMV8102);
+}
+
