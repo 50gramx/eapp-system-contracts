@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package community.apps.gramx.fifty.zero.epn.epn_metering;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_metering/entities;entities";
+
+message EAMV11001 {
+  string eamvt11001 = 1;
+}
+
+message EAMV11002 {
+  google.protobuf.ListValue eamvt11002 = 1;
+  string eamvt11003 = 2;
+}
+
+message EAMV11003 {
+  string eamvt11004 = 1;
+}
+
+message EAMV11004 {
+  string eamvt11005 = 1;
+  google.protobuf.ListValue eamvt11006 = 2;
+  string eamvt11007 = 3;
+}
+
