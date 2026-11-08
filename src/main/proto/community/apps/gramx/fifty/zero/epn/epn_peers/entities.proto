@@ -72,3 +72,13 @@ message EAMV7111 {
   string eamvt7128 = 2;
 }
 
+message EAMV7112 {
+  string eamvt7129 = 1;
+}
+
+message EAMV7113 {
+  google.protobuf.ListValue eamvt7130 = 1;
+  string eamvt7131 = 2;
+  google.protobuf.ListValue eamvt7132 = 3;
+}
+
