@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T04:14:04.380Z",
+  "generatedAt": "2026-11-09T05:15:13.451Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -151,6 +151,34 @@
         },
         "entities": {
           "protoFile": "epn/epn_circle/entities.proto",
+          "services": {}
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_deployments": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_deployments/services;services",
+      "files": [
+        "epn/epn_deployments/EAMV9002_service.proto",
+        "epn/epn_deployments/entities.proto"
+      ],
+      "entities": {
+        "EAMV9002": {
+          "protoFile": "epn/epn_deployments/EAMV9002_service.proto",
+          "services": {
+            "EAMV9002DiscoverService": [
+              {
+                "methodName": "EAMC9001",
+                "requestStream": false,
+                "requestType": "EAMV9001",
+                "responseStream": false,
+                "responseType": "EAMV9002",
+                "capabilityCode": "EAMC9001"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_deployments/entities.proto",
           "services": {}
         }
       }
@@ -363,6 +391,34 @@
         },
         "entities": {
           "protoFile": "epn/epn_peers/entities.proto",
+          "services": {}
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_regions": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_regions/services;services",
+      "files": [
+        "epn/epn_regions/EAMV16002_service.proto",
+        "epn/epn_regions/entities.proto"
+      ],
+      "entities": {
+        "EAMV16002": {
+          "protoFile": "epn/epn_regions/EAMV16002_service.proto",
+          "services": {
+            "EAMV16002DiscoverService": [
+              {
+                "methodName": "EAMC16001",
+                "requestStream": false,
+                "requestType": "EAMV16001",
+                "responseStream": false,
+                "responseType": "EAMV16002",
+                "capabilityCode": "EAMC16001"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_regions/entities.proto",
           "services": {}
         }
       }
