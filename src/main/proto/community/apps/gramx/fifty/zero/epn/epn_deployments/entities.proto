@@ -20,3 +20,16 @@ message EAMV9002 {
   google.protobuf.ListValue eamvt9008 = 7;
 }
 
+message EAMV9003 {
+  string eamvt9010 = 1;
+}
+
+message EAMV9004 {
+  string eamvt9011 = 1;
+  google.protobuf.ListValue eamvt9012 = 2;
+  google.protobuf.ListValue eamvt9013 = 3;
+  google.protobuf.ListValue eamvt9014 = 4;
+  google.protobuf.ListValue eamvt9015 = 5;
+  string eamvt9016 = 6;
+}
+
