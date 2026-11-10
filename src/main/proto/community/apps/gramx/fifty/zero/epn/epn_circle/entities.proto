@@ -34,3 +34,8 @@ message EAMV15005 {
   string eamvt15013 = 2;
 }
 
+message EAMV15006 {
+  string eamvt15014 = 1;
+  string eamvt15015 = 2;
+}
+

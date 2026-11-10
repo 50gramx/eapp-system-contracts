@@ -9,5 +9,6 @@ option go_package = "github.com/50gramx/eapp-golang-domain/community/apps/gramx/
 service EAMV15004DiscoverService {
   rpc EAMC15002 (EAMV15003) returns (EAMV15004);
   rpc EAMC15003 (EAMV15005) returns (EAMV15004);
+  rpc EAMC15004 (EAMV15006) returns (EAMV15004);
 }
 
