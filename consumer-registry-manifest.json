@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T08:15:26.929Z",
+  "generatedAt": "2026-11-11T18:45:18.815Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -168,6 +168,8 @@
       "files": [
         "epn/epn_deployments/EAMV9002_service.proto",
         "epn/epn_deployments/EAMV9004_service.proto",
+        "epn/epn_deployments/EAMV9006_service.proto",
+        "epn/epn_deployments/EAMV9008_service.proto",
         "epn/epn_deployments/entities.proto"
       ],
       "entities": {
@@ -197,6 +199,60 @@
                 "responseStream": false,
                 "responseType": "EAMV9004",
                 "capabilityCode": "EAMC9002"
+              }
+            ]
+          }
+        },
+        "EAMV9006": {
+          "protoFile": "epn/epn_deployments/EAMV9006_service.proto",
+          "services": {
+            "EAMV9006DiscoverService": [
+              {
+                "methodName": "EAMC9003",
+                "requestStream": false,
+                "requestType": "EAMV9005",
+                "responseStream": false,
+                "responseType": "EAMV9006",
+                "capabilityCode": "EAMC9003"
+              }
+            ]
+          }
+        },
+        "EAMV9008": {
+          "protoFile": "epn/epn_deployments/EAMV9008_service.proto",
+          "services": {
+            "EAMV9008DiscoverService": [
+              {
+                "methodName": "EAMC9004",
+                "requestStream": false,
+                "requestType": "EAMV9007",
+                "responseStream": false,
+                "responseType": "EAMV9008",
+                "capabilityCode": "EAMC9004"
+              },
+              {
+                "methodName": "EAMC9005",
+                "requestStream": false,
+                "requestType": "EAMV9009",
+                "responseStream": false,
+                "responseType": "EAMV9008",
+                "capabilityCode": "EAMC9005"
+              },
+              {
+                "methodName": "EAMC9006",
+                "requestStream": false,
+                "requestType": "EAMV9009",
+                "responseStream": false,
+                "responseType": "EAMV9008",
+                "capabilityCode": "EAMC9006"
+              },
+              {
+                "methodName": "EAMC9007",
+                "requestStream": false,
+                "requestType": "EAMV9007",
+                "responseStream": false,
+                "responseType": "EAMV9008",
+                "capabilityCode": "EAMC9007"
               }
             ]
           }
@@ -256,6 +312,7 @@
       "files": [
         "epn/epn_node/EAMV14002_service.proto",
         "epn/epn_node/EAMV14004_service.proto",
+        "epn/epn_node/EAMV14006_service.proto",
         "epn/epn_node/entities.proto"
       ],
       "entities": {
@@ -285,6 +342,29 @@
                 "responseStream": false,
                 "responseType": "EAMV14004",
                 "capabilityCode": "EAMC14002"
+              }
+            ]
+          }
+        },
+        "EAMV14006": {
+          "protoFile": "epn/epn_node/EAMV14006_service.proto",
+          "services": {
+            "EAMV14006DiscoverService": [
+              {
+                "methodName": "EAMC14003",
+                "requestStream": false,
+                "requestType": "EAMV14005",
+                "responseStream": false,
+                "responseType": "EAMV14006",
+                "capabilityCode": "EAMC14003"
+              },
+              {
+                "methodName": "EAMC14004",
+                "requestStream": false,
+                "requestType": "EAMV14007",
+                "responseStream": false,
+                "responseType": "EAMV14006",
+                "capabilityCode": "EAMC14004"
               }
             ]
           }
