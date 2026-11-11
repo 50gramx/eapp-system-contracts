@@ -33,3 +33,33 @@ message EAMV9004 {
   string eamvt9016 = 6;
 }
 
+message EAMV9005 {
+  string eamvt9017 = 1;
+}
+
+message EAMV9006 {
+  google.protobuf.ListValue eamvt9018 = 1;
+  string eamvt9019 = 2;
+}
+
+message EAMV9007 {
+  string eamvt9020 = 1;
+}
+
+message EAMV9008 {
+  string eamvt9028 = 1;
+  string eamvt9021 = 2;
+  string eamvt9022 = 3;
+  google.protobuf.ListValue eamvt9023 = 4;
+  google.protobuf.ListValue eamvt9024 = 5;
+  google.protobuf.ListValue eamvt9025 = 6;
+  google.protobuf.ListValue eamvt9026 = 7;
+  google.protobuf.ListValue eamvt9027 = 8;
+  string eamvt9031 = 9;
+}
+
+message EAMV9009 {
+  string eamvt9029 = 1;
+  string eamvt9030 = 2;
+}
+
