@@ -11,5 +11,7 @@ service EAMV9008DiscoverService {
   rpc EAMC9005 (EAMV9009) returns (EAMV9008);
   rpc EAMC9006 (EAMV9009) returns (EAMV9008);
   rpc EAMC9007 (EAMV9007) returns (EAMV9008);
+  rpc EAMC9008 (EAMV9010) returns (EAMV9008);
+  rpc EAMC9009 (EAMV9007) returns (EAMV9008);
 }
 

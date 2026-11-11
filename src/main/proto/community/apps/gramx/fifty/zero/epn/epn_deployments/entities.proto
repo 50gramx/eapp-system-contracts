@@ -63,3 +63,8 @@ message EAMV9009 {
   string eamvt9030 = 2;
 }
 
+message EAMV9010 {
+  string eamvt9032 = 1;
+  string eamvt9033 = 2;
+}
+
