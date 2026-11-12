@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T10:29:10.374Z",
+  "generatedAt": "2026-11-12T20:22:36.509Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -389,6 +389,14 @@
                 "responseStream": false,
                 "responseType": "EAMV14006",
                 "capabilityCode": "EAMC14004"
+              },
+              {
+                "methodName": "EAMC14005",
+                "requestStream": false,
+                "requestType": "EAMV14008",
+                "responseStream": false,
+                "responseType": "EAMV14006",
+                "capabilityCode": "EAMC14005"
               }
             ]
           }
