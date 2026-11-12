@@ -56,6 +56,14 @@ message EAMV9008 {
   google.protobuf.ListValue eamvt9026 = 7;
   google.protobuf.ListValue eamvt9027 = 8;
   string eamvt9031 = 9;
+  string eamvt9034 = 10;
+  google.protobuf.ListValue eamvt9035 = 11;
+  google.protobuf.ListValue eamvt9036 = 12;
+  google.protobuf.ListValue eamvt9037 = 13;
+  google.protobuf.ListValue eamvt9038 = 14;
+  google.protobuf.ListValue eamvt9039 = 15;
+  string eamvt9040 = 16;
+  string eamvt9041 = 17;
 }
 
 message EAMV9009 {
@@ -66,5 +74,12 @@ message EAMV9009 {
 message EAMV9010 {
   string eamvt9032 = 1;
   string eamvt9033 = 2;
+}
+
+message EAMV9011 {
+  string eamvt9042 = 1;
+  string eamvt9043 = 2;
+  string eamvt9044 = 3;
+  string eamvt9045 = 4;
 }
 
