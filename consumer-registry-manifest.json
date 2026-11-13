@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T19:22:23.072Z",
+  "generatedAt": "2026-11-13T21:16:32.147Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -327,6 +327,34 @@
         },
         "entities": {
           "protoFile": "epn/epn_metering/entities.proto",
+          "services": {}
+        }
+      }
+    },
+    "community.apps.gramx.fifty.zero.epn.epn_my_grams": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_my_grams/services;services",
+      "files": [
+        "epn/epn_my_grams/EAMV17002_service.proto",
+        "epn/epn_my_grams/entities.proto"
+      ],
+      "entities": {
+        "EAMV17002": {
+          "protoFile": "epn/epn_my_grams/EAMV17002_service.proto",
+          "services": {
+            "EAMV17002DiscoverService": [
+              {
+                "methodName": "EAMC17001",
+                "requestStream": false,
+                "requestType": "EAMV17001",
+                "responseStream": false,
+                "responseType": "EAMV17002",
+                "capabilityCode": "EAMC17001"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_my_grams/entities.proto",
           "services": {}
         }
       }
