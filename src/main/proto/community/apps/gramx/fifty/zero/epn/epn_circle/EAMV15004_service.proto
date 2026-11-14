@@ -10,5 +10,6 @@ service EAMV15004DiscoverService {
   rpc EAMC15002 (EAMV15003) returns (EAMV15004);
   rpc EAMC15003 (EAMV15005) returns (EAMV15004);
   rpc EAMC15004 (EAMV15006) returns (EAMV15004);
+  rpc EAMC15005 (EAMV15007) returns (EAMV15004);
 }
 

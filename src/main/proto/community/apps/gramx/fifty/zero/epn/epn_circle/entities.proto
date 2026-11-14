@@ -28,6 +28,10 @@ message EAMV15004 {
   google.protobuf.ListValue eamvt15010 = 4;
   google.protobuf.ListValue eamvt15011 = 5;
   google.protobuf.ListValue eamvt15016 = 6;
+  string eamvt15017 = 7;
+  google.protobuf.ListValue eamvt15018 = 8;
+  google.protobuf.ListValue eamvt15019 = 9;
+  google.protobuf.ListValue eamvt15020 = 10;
 }
 
 message EAMV15005 {
@@ -38,5 +42,12 @@ message EAMV15005 {
 message EAMV15006 {
   string eamvt15014 = 1;
   string eamvt15015 = 2;
+}
+
+message EAMV15007 {
+  string eamvt15021 = 1;
+  string eamvt15022 = 2;
+  string eamvt15023 = 3;
+  string eamvt15024 = 4;
 }
 
