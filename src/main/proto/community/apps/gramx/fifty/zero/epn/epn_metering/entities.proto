@@ -49,5 +49,6 @@ message EAMV11006 {
   google.protobuf.ListValue eamvt11033 = 11;
   google.protobuf.ListValue eamvt11034 = 12;
   string eamvt11035 = 13;
+  string eamvt11036 = 14;
 }
 
