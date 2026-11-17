@@ -29,3 +29,25 @@ message EAMV11004 {
   string eamvt11007 = 3;
 }
 
+message EAMV11005 {
+  string eamvt11020 = 1;
+  string eamvt11021 = 2;
+  string eamvt11022 = 3;
+}
+
+message EAMV11006 {
+  string eamvt11023 = 1;
+  google.protobuf.ListValue eamvt11024 = 2;
+  string eamvt11025 = 3;
+  string eamvt11026 = 4;
+  google.protobuf.ListValue eamvt11027 = 5;
+  google.protobuf.ListValue eamvt11028 = 6;
+  google.protobuf.ListValue eamvt11029 = 7;
+  google.protobuf.ListValue eamvt11030 = 8;
+  google.protobuf.ListValue eamvt11031 = 9;
+  google.protobuf.ListValue eamvt11032 = 10;
+  google.protobuf.ListValue eamvt11033 = 11;
+  google.protobuf.ListValue eamvt11034 = 12;
+  string eamvt11035 = 13;
+}
+
