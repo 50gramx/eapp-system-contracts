@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T21:10:10.849Z",
+  "generatedAt": "2026-11-20T06:31:42.046Z",
   "contractsSource": "proto-files",
   "protoRoot": "/home/runner/work/eapp-system-contracts/eapp-system-contracts/src/main/proto/community/apps/gramx/fifty/zero",
   "packages": {
@@ -295,11 +295,40 @@
         }
       }
     },
+    "community.apps.gramx.fifty.zero.epn.epn_home": {
+      "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_home/services;services",
+      "files": [
+        "epn/epn_home/EAMV5002_service.proto",
+        "epn/epn_home/entities.proto"
+      ],
+      "entities": {
+        "EAMV5002": {
+          "protoFile": "epn/epn_home/EAMV5002_service.proto",
+          "services": {
+            "EAMV5002DiscoverService": [
+              {
+                "methodName": "EAMC5001",
+                "requestStream": false,
+                "requestType": "EAMV5001",
+                "responseStream": false,
+                "responseType": "EAMV5002",
+                "capabilityCode": "EAMC5001"
+              }
+            ]
+          }
+        },
+        "entities": {
+          "protoFile": "epn/epn_home/entities.proto",
+          "services": {}
+        }
+      }
+    },
     "community.apps.gramx.fifty.zero.epn.epn_metering": {
       "goPackage": "github.com/50gramx/eapp-golang-domain/community/apps/gramx/fifty/zero/epn/epn_metering/services;services",
       "files": [
         "epn/epn_metering/EAMV11002_service.proto",
         "epn/epn_metering/EAMV11004_service.proto",
+        "epn/epn_metering/EAMV11006_service.proto",
         "epn/epn_metering/entities.proto"
       ],
       "entities": {
@@ -329,6 +358,21 @@
                 "responseStream": false,
                 "responseType": "EAMV11004",
                 "capabilityCode": "EAMC11002"
+              }
+            ]
+          }
+        },
+        "EAMV11006": {
+          "protoFile": "epn/epn_metering/EAMV11006_service.proto",
+          "services": {
+            "EAMV11006DiscoverService": [
+              {
+                "methodName": "EAMC11003",
+                "requestStream": false,
+                "requestType": "EAMV11005",
+                "responseStream": false,
+                "responseType": "EAMV11006",
+                "capabilityCode": "EAMC11003"
               }
             ]
           }
