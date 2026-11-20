@@ -3,7 +3,9 @@ name: Protobuf Distribution
 on:
   push:
     branches: [ master ]
-    paths: [ 'src/main/proto/**' ]
+    # The workflow itself too: a fix to the pipeline re-runs it (20 Nov 2026,
+    # when Python 3.9 left the runners and every distribution since 17 Nov failed).
+    paths: [ 'src/main/proto/**', '.github/workflows/protobuf-distribution.yml' ]
   repository_dispatch:
     types: [ protobuf-sync ]
   workflow_dispatch:
@@ -37,9 +39,9 @@ jobs:
           path: python-domain
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Install Python dependencies
         run: |
@@ -559,9 +561,9 @@ jobs:
           ref: main
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Validate Python Consumer
         run: |
@@ -596,9 +598,9 @@ jobs:
           ref: master
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Validate Python Implementation
         run: |
