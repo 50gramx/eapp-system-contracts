@@ -10,6 +10,7 @@ message EAMV6001 {
   string eamvt6001 = 1;
   string eamvt6002 = 2;
   string eamvt6003 = 3;
+  string eamvt6045 = 4;
 }
 
 message EAMV6002 {
